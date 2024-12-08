@@ -5,5 +5,5 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_bxgmr")
-shader_parameter/ColorParameter = Color(0.835938, 0.415724, 0.0783691, 1)
-shader_parameter/ColorParameter2 = Color(0.500977, 0.627434, 0.75, 1)
+shader_parameter/ColorParameter = Color(0.148544, 0.31904, 0.644531, 1)
+shader_parameter/ColorParameter2 = Color(0.808594, 0.582929, 0.319016, 1)
