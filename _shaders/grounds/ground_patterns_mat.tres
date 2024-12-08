@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://oqh515whiy06"]
+
+[ext_resource type="Shader" uid="uid://f7vlj7i8eh00" path="res://_shaders/grounds/custom_gr_tex.tres" id="1_ymivt"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ymivt")
+shader_parameter/ColorBot = Color(0.134126, 0.226337, 0.166001, 1)
+shader_parameter/ColorTop = Color(0.313231, 0.559671, 0.313231, 1)

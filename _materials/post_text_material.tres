@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://co0ndj8kwmqkv"]
+
+[ext_resource type="Shader" path="res://_shaders/post/post_test.gdshader" id="1_syci7"]
+
+[resource]
+shader = ExtResource("1_syci7")
+shader_parameter/glow_strength = 0.535

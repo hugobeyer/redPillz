@@ -1,0 +1,119 @@
+[gd_scene load_steps=9 format=3 uid="uid://ba1iyod4gohu8"]
+
+[ext_resource type="FontVariation" uid="uid://cwxu07t5jip7t" path="res://_resources/fonts/font_health_overhead.tres" id="1_567ce"]
+[ext_resource type="Script" path="res://_scripts/UI/game_label_kills.gd" id="2_tm4wx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_feyws"]
+bg_color = Color(0.46875, 0.0128174, 0.226536, 1)
+border_width_top = 54
+border_color = Color(0.144196, 0.443393, 0.683594, 1)
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 11
+corner_detail = 3
+shadow_color = Color(0.055, 0.1375, 0.22, 0.415686)
+shadow_size = 1
+shadow_offset = Vector2(5.761, 5.085)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7s0d6"]
+light_mode = 1
+
+[sub_resource type="SystemFont" id="SystemFont_0ls1l"]
+font_names = PackedStringArray("Squada One", "Suez One", "MV Boli", "Bungee", "Fantasy", "Bowlby One SC", "Luckiest Guy", "Lilita One", "Poppins", "Bowlby One SC", "Titan One")
+generate_mipmaps = true
+allow_system_fallback = false
+subpixel_positioning = 0
+
+[sub_resource type="FontVariation" id="FontVariation_oh2c4"]
+base_font = SubResource("SystemFont_0ls1l")
+spacing_glyph = -1
+spacing_space = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_vkafs"]
+font = SubResource("FontVariation_oh2c4")
+font_size = 80
+font_color = Color(0.773438, 0.480165, 0.24472, 1)
+outline_color = Color(0.25, 0, 0, 0)
+shadow_size = 0
+shadow_color = Color(0, 0.096, 0.32, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_uetrx"]
+font = ExtResource("1_567ce")
+font_size = 135
+font_color = Color(0.787725, 0.81, 0.5427, 1)
+outline_size = 4
+outline_color = Color(0.53, 0.1113, 0.1113, 0)
+shadow_size = 0
+shadow_color = Color(0.00569999, 0.0732767, 0.19, 0.490196)
+shadow_offset = Vector2(9, 7)
+
+[node name="SubViewport" type="Node3D"]
+
+[node name="MainHUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="MainHUD"]
+layout_mode = 2
+offset_left = 555.931
+offset_top = 68.937
+offset_right = 754.931
+offset_bottom = 145.937
+rotation = -0.204204
+scale = Vector2(0.891339, 0.789322)
+theme_override_styles/panel = SubResource("StyleBoxFlat_feyws")
+metadata/_edit_use_anchors_ = true
+
+[node name="Based" type="Label" parent="MainHUD"]
+light_mask = 0
+material = SubResource("CanvasItemMaterial_7s0d6")
+layout_direction = 1
+layout_mode = 2
+anchor_left = 0.828362
+anchor_top = 0.0852833
+anchor_right = 0.839192
+anchor_bottom = 0.0852833
+offset_left = 25.7695
+offset_top = -3.06947
+offset_right = 219.188
+offset_bottom = 81.9305
+rotation = -0.151205
+scale = Vector2(0.362416, 0.362416)
+size_flags_vertical = 0
+theme_override_constants/shadow_outline_size = 5
+text = "PiLLeD!"
+label_settings = SubResource("LabelSettings_vkafs")
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelKills" type="Label" parent="MainHUD"]
+z_as_relative = false
+texture_filter = 2
+texture_repeat = 1
+layout_mode = 2
+anchor_left = 3.26108e-05
+anchor_top = -0.00842884
+anchor_right = 3.26108e-05
+anchor_bottom = -0.003745
+offset_left = 532.728
+offset_top = 34.2464
+offset_right = 743.728
+offset_bottom = 180.247
+rotation = 0.0168936
+scale = Vector2(0.585275, 0.585275)
+size_flags_horizontal = 8
+size_flags_vertical = 0
+localize_numeral_system = false
+text = "367"
+label_settings = SubResource("LabelSettings_uetrx")
+horizontal_alignment = 1
+script = ExtResource("2_tm4wx")
+metadata/_edit_use_anchors_ = true

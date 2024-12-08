@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyw5sexd8rqxc"]
+
+[ext_resource type="Shader" uid="uid://cj56yf8aifbws" path="res://_shaders/uji/enemy_health.tres" id="1_3t6g7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iny4y"]
+render_priority = 0
+shader = ExtResource("1_3t6g7")
+shader_parameter/Color = Color(1, 1, 1, 1)
+shader_parameter/Color2 = Color(0.171875, 1, 0, 1)
+shader_parameter/Color3 = Color(1, 0, 0, 1)
+shader_parameter/FloatParameter = 0.0
+shader_parameter/FloatParameter2 = 0.7
+shader_parameter/FloatParameter3 = 1.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_20tc1"]
+size = Vector2(3, 3)
+
+[node name="FlockingRing" type="Node3D"]
+
+[node name="radius_vis" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.1, 0)
+material_override = SubResource("ShaderMaterial_iny4y")
+cast_shadow = 0
+gi_mode = 0
+instance_shader_parameters/health_parm = 1.0
+mesh = SubResource("QuadMesh_20tc1")

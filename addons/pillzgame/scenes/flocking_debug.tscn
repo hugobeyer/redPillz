@@ -1,0 +1,91 @@
+[gd_scene load_steps=9 format=3 uid="uid://dyq15p7loajsl"]
+
+[ext_resource type="Shader" path="res://_shaders/custom/custom_frag_actors.gdshader" id="1_olesv"]
+[ext_resource type="PackedScene" uid="uid://bqey4meim1lok" path="res://_assets/pivot.tscn" id="3_olesv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rkf20"]
+render_priority = 0
+shader = ExtResource("1_olesv")
+shader_parameter/color_top = Color(0.214218, 0.381162, 0.542969, 1)
+shader_parameter/color_bottom = Color(0.632813, 0.613037, 0.613037, 1)
+shader_parameter/specular_color = Color(1, 1, 1, 1)
+shader_parameter/fresnel_color = Color(0, 0.222656, 0.207001, 1)
+shader_parameter/vertex_color_mix = 0.0
+shader_parameter/blend_mode = 0
+shader_parameter/gradient_rotation_mode = 1
+shader_parameter/gradient_offset = 0.0630001
+shader_parameter/gradient_smoothness = 0.0
+shader_parameter/diffuse_contrast = 0.93
+shader_parameter/diffuse_wrap = 2.0
+shader_parameter/diffuse_offset = -0.103
+shader_parameter/specular_intensity = 2.0
+shader_parameter/specular_size = 0.077
+shader_parameter/specular_smoothness = 0.384
+shader_parameter/specular_offset = -0.069
+shader_parameter/fresnel_power = 1.0
+shader_parameter/fresnel_intensity = 1.0
+shader_parameter/fresnel_contrast = 1.0
+shader_parameter/fresnel_offset = 4.75e-08
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_vmjrb"]
+radius = 0.41
+radial_segments = 24
+
+[sub_resource type="Gradient" id="Gradient_k6a21"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.35, 0.481371, 0.520119, 0.65, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.117647, 1, 1, 1, 1, 1, 1, 1, 0.973393, 1, 1, 1, 0.207843, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_olesv"]
+gradient = SubResource("Gradient_k6a21")
+width = 128
+height = 32
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rkf20"]
+transparency = 1
+blend_mode = 1
+no_depth_test = true
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 2
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(0.554688, 0.853882, 1, 1)
+albedo_texture = SubResource("GradientTexture2D_olesv")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_dl4w1"]
+flip_faces = true
+top_radius = 0.505
+bottom_radius = 0.461
+height = 0.001
+radial_segments = 24
+rings = 1
+cap_top = false
+cap_bottom = false
+
+[node name="FlockingDebug" type="Node3D"]
+
+[node name="capsule_vis" type="MeshInstance3D" parent="."]
+process_physics_priority = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = SubResource("ShaderMaterial_rkf20")
+instance_shader_parameters/alpha = 0.0
+instance_shader_parameters/lerp_color = Color(0.395203, 0.24353, 0.546875, 1)
+instance_shader_parameters/lerp_displace_normal = 4.75e-08
+instance_shader_parameters/lerp_wave = 0.0
+instance_shader_parameters/lerp_wave_contrast = 4.0
+instance_shader_parameters/lerp_wave_freq = 7.78
+instance_shader_parameters/lerp_wave_offset = 2.64
+instance_shader_parameters/lerp_wave_type = 3
+instance_shader_parameters/wave_range_lerp = 0.53
+mesh = SubResource("CapsuleMesh_vmjrb")
+skeleton = NodePath("")
+
+[node name="pivot" parent="." instance=ExtResource("3_olesv")]
+
+[node name="radius_vis" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_rkf20")
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("CylinderMesh_dl4w1")

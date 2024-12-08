@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://cie76qhjp2gje"]
+
+[ext_resource type="PackedScene" uid="uid://dark23y2wrj47" path="res://_meshes/items/simple_sword1.gltf" id="1_e2uoe"]
+[ext_resource type="Material" uid="uid://c0y0m1vx5fhrr" path="res://_materials/prop_inst_mat.tres" id="2_csb84"]
+
+[node name="simple_sword" instance=ExtResource("1_e2uoe")]
+
+[node name="simple_sword" parent="." index="0"]
+transform = Transform3D(0.251036, 0, 0, 0, 0.251036, 0, 0, 0, 0.251036, 0, 0, 0.44474)
+material_override = ExtResource("2_csb84")
+instance_shader_parameters/blend_mode = 0
+instance_shader_parameters/color_bottom = Color(1, 0.55, 0.12, 1)
+instance_shader_parameters/color_top = Color(0, 0, 1, 1)
+instance_shader_parameters/fresnel_color = Color(0, 1, 0, 1)
+instance_shader_parameters/gradient_rotation_mode = 1
+instance_shader_parameters/gradient_smoothness = 1.0
+instance_shader_parameters/lerp_color = Color(1, 1, 1, 1)
+instance_shader_parameters/lerp_displace_normal = 0.0
+instance_shader_parameters/lerp_wave = 1.0
+instance_shader_parameters/lerp_wave_contrast = 0.205
+instance_shader_parameters/lerp_wave_freq = 0.0
+instance_shader_parameters/lerp_wave_offset = 32.0
+instance_shader_parameters/lerp_wave_type = 6
+instance_shader_parameters/specular_color = Color(1, 1, 1, 1)
+instance_shader_parameters/vertex_color_mix = 1.0
+instance_shader_parameters/wave_range_lerp = 1.0

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dyd0j3erm2r7r"]
+
+[node name="NavigationAgent3D" type="NavigationAgent3D"]
+path_postprocessing = 1
+height = 2.0
+radius = 0.13
+neighbor_distance = 0.62
+max_neighbors = 5
+time_horizon_agents = 0.13
+max_speed = 80.0
+use_3d_avoidance = true
+avoidance_layers = 0
+avoidance_mask = 0
+avoidance_priority = 0.0
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_point_size = 6.0

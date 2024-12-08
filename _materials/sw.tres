@@ -1,0 +1,27 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b8vv7ub5nbgg0"]
+
+[ext_resource type="Shader" path="res://_shaders/custom/custom_frag_actors.gdshader" id="1_6ruao"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_6ruao")
+shader_parameter/color_top = Color(0.221786, 0.28011, 0.371094, 1)
+shader_parameter/color_bottom = Color(0.148438, 0.0521851, 0, 1)
+shader_parameter/specular_color = Color(1, 1, 1, 1)
+shader_parameter/fresnel_color = Color(0.199219, 0.225159, 0.265625, 1)
+shader_parameter/vertex_color_mix = 0.604
+shader_parameter/blend_mode = 0
+shader_parameter/gradient_rotation_mode = 2
+shader_parameter/gradient_offset = 1.0
+shader_parameter/gradient_smoothness = 7.509
+shader_parameter/diffuse_contrast = 1.41
+shader_parameter/diffuse_wrap = 2.0
+shader_parameter/diffuse_offset = -0.71
+shader_parameter/specular_intensity = 2.0
+shader_parameter/specular_size = 0.009
+shader_parameter/specular_smoothness = 0.085
+shader_parameter/specular_offset = -0.378
+shader_parameter/fresnel_power = 0.386
+shader_parameter/fresnel_intensity = 1.069
+shader_parameter/fresnel_contrast = 2.772
+shader_parameter/fresnel_offset = -0.197

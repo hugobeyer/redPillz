@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkdkucw2l03dw"]
+
+[ext_resource type="Script" path="res://_scripts/include/enemy_effects.gd" id="1_1amcm"]
+
+[node name="EnemyEffects" type="Node3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.0272655, -0.0102601, -0.0188251)
+script = ExtResource("1_1amcm")
+flash_duration = 12.0
+flash_offset = 1.0

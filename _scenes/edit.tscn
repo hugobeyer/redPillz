@@ -1,0 +1,183 @@
+[gd_scene load_steps=3 format=3 uid="uid://22iyqvsksmej"]
+
+[ext_resource type="Script" path="res://_scripts/wave_editor.gd" id="1_bea4i"]
+
+[sub_resource type="Theme" id="Theme_2hs4r"]
+default_font_size = 16
+
+[node name="WaveEditor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_2hs4r")
+script = ExtResource("1_bea4i")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(600, 600)
+layout_direction = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+offset_left = 32.0
+offset_top = 32.0
+offset_right = -32.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Wave Editor"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="WaveListContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.87
+
+[node name="WaveList" type="ItemList" parent="VBoxContainer/HBoxContainer/WaveListContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+item_count = 1
+item_0/text = "Wave 1"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/WaveListContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="AddWaveButton" type="Button" parent="VBoxContainer/HBoxContainer/WaveListContainer/HBoxContainer"]
+layout_mode = 2
+text = "Add Wave"
+
+[node name="RemoveWaveButton" type="Button" parent="VBoxContainer/HBoxContainer/WaveListContainer/HBoxContainer"]
+layout_mode = 2
+text = "Remove Wave"
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="WaveDetailsContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.65
+
+[node name="WaveDetailsLabel" type="Label" parent="VBoxContainer/HBoxContainer/WaveDetailsContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Wave Details"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/HBoxContainer/WaveDetailsContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="EnemyCountLabel" type="Label" parent="VBoxContainer/HBoxContainer/WaveDetailsContainer/GridContainer"]
+layout_mode = 2
+text = "Enemy Count:"
+
+[node name="EnemyCountSpinBox" type="SpinBox" parent="VBoxContainer/HBoxContainer/WaveDetailsContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 1.0
+value = 1.0
+
+[node name="SizeMultiplierLabel" type="Label" parent="VBoxContainer/HBoxContainer/WaveDetailsContainer/GridContainer"]
+layout_mode = 2
+text = "Size Multiplier:"
+
+[node name="SizeMultiplierSpinBox" type="SpinBox" parent="VBoxContainer/HBoxContainer/WaveDetailsContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.1
+max_value = 5.0
+step = 0.1
+value = 1.0
+
+[node name="DifficultyLabel" type="Label" parent="VBoxContainer/HBoxContainer/WaveDetailsContainer/GridContainer"]
+layout_mode = 2
+text = "Difficulty:"
+
+[node name="DifficultyOptionButton" type="OptionButton" parent="VBoxContainer/HBoxContainer/WaveDetailsContainer/GridContainer"]
+layout_mode = 2
+item_count = 3
+popup/item_0/text = "Easy"
+popup/item_1/text = "Medium"
+popup/item_1/id = 1
+popup/item_2/text = "Hard"
+popup/item_2/id = 2
+
+[node name="SpawnIntervalLabel" type="Label" parent="VBoxContainer/HBoxContainer/WaveDetailsContainer/GridContainer"]
+layout_mode = 2
+text = "Spawn Interval:"
+
+[node name="SpawnIntervalSpinBox" type="SpinBox" parent="VBoxContainer/HBoxContainer/WaveDetailsContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 10.0
+step = 0.1
+value = 1.0
+suffix = "s"
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="SaveButton" type="Button" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Save Waves"
+
+[node name="LoadButton" type="Button" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Load Waves"
+
+[node name="PreviewButton" type="Button" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Preview Wave"
+
+[node name="BackButton" type="Button" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Back to Start"
+
+[node name="FileDialog" type="FileDialog" parent="."]
+mode = 2
+title = "Open a File"
+size = Vector2i(500, 400)
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.json ; JSON Files")
+
+[node name="WarningPopup" type="AcceptDialog" parent="."]
+title = "Warning"
+size = Vector2i(200, 100)
+dialog_text = "Warning message here."
+
+[connection signal="item_selected" from="VBoxContainer/HBoxContainer/WaveListContainer/WaveList" to="." method="_on_wave_list_item_selected"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/WaveListContainer/HBoxContainer/AddWaveButton" to="." method="_on_add_wave_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/WaveListContainer/HBoxContainer/RemoveWaveButton" to="." method="_on_remove_wave_button_pressed"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer/WaveDetailsContainer/GridContainer/EnemyCountSpinBox" to="." method="_on_enemy_count_spin_box_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer/WaveDetailsContainer/GridContainer/SizeMultiplierSpinBox" to="." method="_on_size_multiplier_spin_box_value_changed"]
+[connection signal="item_selected" from="VBoxContainer/HBoxContainer/WaveDetailsContainer/GridContainer/DifficultyOptionButton" to="." method="_on_difficulty_option_button_item_selected"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer/WaveDetailsContainer/GridContainer/SpawnIntervalSpinBox" to="." method="_on_spawn_interval_spin_box_value_changed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/LoadButton" to="." method="_on_load_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/PreviewButton" to="." method="_on_preview_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]

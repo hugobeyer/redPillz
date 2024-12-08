@@ -1,0 +1,81 @@
+[gd_scene load_steps=9 format=3 uid="uid://cw3xgyijrvuub"]
+
+[ext_resource type="Script" path="res://_scripts/enemy.gd" id="1_a3n1o"]
+[ext_resource type="Script" path="res://_scripts/include/enemy_effects.gd" id="3_yiueq"]
+[ext_resource type="Material" uid="uid://c3n5l5qp54ah5" path="res://_materials/imp_mats/fast_imp.tres" id="4_cqftm"]
+[ext_resource type="PackedScene" uid="uid://dwpsppfskic5x" path="res://_scenes/enemy_features/melee.tscn" id="5_obebj"]
+[ext_resource type="PackedScene" uid="uid://d1dt4pblukewh" path="res://_scenes/enemy_health_bar.tscn" id="5_upr6t"]
+[ext_resource type="PackedScene" uid="uid://bud2p2xgbdxj4" path="res://_scenes/enemy_features/shield.tscn" id="6_c415n"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ejukm"]
+custom_solver_bias = 0.242
+radius = 0.667895
+height = 2.339
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_sx6u4"]
+resource_local_to_scene = true
+radius = 0.528
+height = 2.208
+radial_segments = 9
+rings = 3
+
+[node name="Enemy" type="RigidBody3D" groups=["enemies"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 2
+collision_mask = 17170687
+input_ray_pickable = false
+axis_lock_linear_y = true
+gravity_scale = 0.0
+can_sleep = false
+lock_rotation = true
+linear_damp = 0.145
+angular_damp = 0.4
+script = ExtResource("1_a3n1o")
+max_health = 64.0
+movement_speed = 1.0
+initial_max_speed = 1.0
+turn_speed = 5.0
+damage = 12.0
+use_shield = true
+use_melee = true
+flock_separation_weight = 333.0
+flock_alignment_weight = 2.0
+flock_cohesion_weight = 1.0
+flock_neighbor_distance = 32.0
+flock_weight_change_rate = 1.0
+max_flock_weight_multiplier = 1.0
+death_effect_duration = 1.0
+berserk_speed_multiplier = 1.0
+berserk_duration = 1.0
+wander_radius = 555.0
+wander_interval = 22.0
+wobble_strength = 0.79
+wobble_decay = 2.935
+wobble_damping = 0.72
+
+[node name="EnemyEffects" type="Node3D" parent="."]
+script = ExtResource("3_yiueq")
+flash_color = Color(0.933594, 0.504747, 0.160461, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.423978, 0)
+shape = SubResource("CapsuleShape3D_ejukm")
+
+[node name="HealthBar" parent="." instance=ExtResource("5_upr6t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.98312, 0)
+
+[node name="mesh_pivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.460385, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="mesh_pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.864266, 0)
+layers = 31
+material_override = ExtResource("4_cqftm")
+instance_shader_parameters/lerp_color = Color(1.5, 0.1, 0.1, 1)
+instance_shader_parameters/lerp_wave = 0.0
+mesh = SubResource("CapsuleMesh_sx6u4")
+skeleton = NodePath("../..")
+
+[node name="MeleeWeapon" parent="." instance=ExtResource("5_obebj")]
+
+[node name="EnemyShield" parent="." instance=ExtResource("6_c415n")]

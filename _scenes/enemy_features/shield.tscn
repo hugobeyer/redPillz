@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://bud2p2xgbdxj4"]
+
+[ext_resource type="Script" path="res://_scripts/include/enemy_shield.gd" id="1_02fak"]
+[ext_resource type="Shader" path="res://_shaders/custom/custom_frag_actors.gdshader" id="2_n7cs1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_volny"]
+render_priority = 0
+shader = ExtResource("2_n7cs1")
+shader_parameter/color_top = Color(0.300781, 0.300781, 0.300781, 1)
+shader_parameter/color_bottom = Color(0.816406, 0.816406, 0.816406, 1)
+shader_parameter/specular_color = Color(1, 1, 1, 1)
+shader_parameter/fresnel_color = Color(0, 0.222656, 0.207001, 1)
+shader_parameter/vertex_color_mix = 0.0
+shader_parameter/blend_mode = 0
+shader_parameter/gradient_rotation_mode = 1
+shader_parameter/gradient_offset = 0.21
+shader_parameter/gradient_smoothness = 0.76
+shader_parameter/diffuse_contrast = 0.31
+shader_parameter/diffuse_wrap = 0.885
+shader_parameter/diffuse_offset = -0.67
+shader_parameter/specular_intensity = 2.0
+shader_parameter/specular_size = 0.05
+shader_parameter/specular_smoothness = 0.628
+shader_parameter/specular_offset = 0.55
+shader_parameter/fresnel_power = 0.215
+shader_parameter/fresnel_intensity = 0.943
+shader_parameter/fresnel_contrast = 1.069
+shader_parameter/fresnel_offset = 0.25
+
+[sub_resource type="SphereMesh" id="SphereMesh_bk26o"]
+radius = 0.7
+height = 0.5
+radial_segments = 16
+rings = 6
+is_hemisphere = true
+
+[node name="EnemyShield" type="Node3D" groups=["shield"]]
+script = ExtResource("1_02fak")
+max_shield_strength = 512.0
+
+[node name="ShieldMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 4.63341e-08, -3.82137e-15, 0, -2.3167e-08, -1, -8.74228e-08, -0.53, 4.37114e-08, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_volny")
+gi_mode = 0
+mesh = SubResource("SphereMesh_bk26o")
+skeleton = NodePath("")

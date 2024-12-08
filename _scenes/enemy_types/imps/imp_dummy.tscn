@@ -1,0 +1,106 @@
+[gd_scene load_steps=12 format=3 uid="uid://d04f1fywismba"]
+
+[ext_resource type="Script" path="res://_scripts/enemy.gd" id="1_gy1cg"]
+[ext_resource type="Script" path="res://addons/pillz_table_editor/resources/enemy_data.gd" id="2_y13xv"]
+[ext_resource type="PackedScene" uid="uid://dkdkucw2l03dw" path="res://_scenes/enemy_features/enemy_effects.tscn" id="3_n5mt5"]
+[ext_resource type="Material" uid="uid://b3arjlgplp4w3" path="res://_materials/imp_mats/naked_imp_mat.tres" id="4_828xf"]
+[ext_resource type="PackedScene" uid="uid://dwpsppfskic5x" path="res://_scenes/enemy_features/melee.tscn" id="6_0wft8"]
+[ext_resource type="PackedScene" uid="uid://bud2p2xgbdxj4" path="res://_scenes/enemy_features/shield.tscn" id="7_40fmv"]
+[ext_resource type="PackedScene" uid="uid://d1dt4pblukewh" path="res://_scenes/enemy_health_bar.tscn" id="7_a8vfd"]
+
+[sub_resource type="Resource" id="Resource_8k4jq"]
+script = ExtResource("2_y13xv")
+scene_path = ""
+child_scenes = Array[PackedScene]([])
+type = "dummy"
+category = ""
+enemy_rank = 0
+spawn_weight = 1.0
+use_shield = false
+use_melee = false
+max_health = 25.0
+movement_speed = 6.0
+knockback_resistance = 80.0
+turn_speed = 3.0
+detection_range = 32.0
+damage = 5.0
+flock_separation_weight = 5.0
+flock_alignment_weight = 3.0
+flock_cohesion_weight = 2.0
+flock_neighbor_distance = 5.0
+max_flock_neighbors = 8
+flock_weight_change_rate = 0.1
+max_flock_weight_multiplier = 2.0
+death_effect_duration = 1.0
+berserk_chance = 0.0
+berserk_speed_multiplier = 2.0
+berserk_duration = 3.0
+wander_radius = 5.0
+wander_interval = 5.0
+wobble_strength = 1.0
+wobble_decay = 0.2
+wobble_damping = 0.9
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ejukm"]
+margin = 0.1
+radius = 0.563
+height = 1.922
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_wisk0"]
+resource_local_to_scene = true
+radius = 0.372
+height = 1.622
+radial_segments = 9
+rings = 3
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ar31c"]
+height = 0.31212
+radius = 0.656815
+
+[node name="Enemy" type="CharacterBody3D" groups=["enemies"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 2
+collision_mask = 17170687
+input_ray_pickable = false
+axis_lock_linear_y = true
+floor_stop_on_slope = false
+floor_block_on_wall = false
+safe_margin = 0.05
+script = ExtResource("1_gy1cg")
+enemy_type = SubResource("Resource_8k4jq")
+flock_alignment_weight = inf
+flock_cohesion_weight = inf
+enemy_type = SubResource("Resource_8k4jq")
+
+[node name="EnemyEffects" parent="." instance=ExtResource("3_n5mt5")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00305998, 0)
+shape = SubResource("CapsuleShape3D_ejukm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+process_mode = 3
+layers = 31
+material_override = ExtResource("4_828xf")
+instance_shader_parameters/lerp_color = Color(1.5, 0.1, 0.1, 1)
+instance_shader_parameters/lerp_wave = 0.0
+instance_shader_parameters/lerp_wave_contrast = 1.0
+instance_shader_parameters/lerp_wave_freq = 1.0
+instance_shader_parameters/lerp_wave_offset = -7.15264e-07
+instance_shader_parameters/lerp_wave_type = 0
+instance_shader_parameters/wave_range_lerp = 0.0
+mesh = SubResource("CapsuleMesh_wisk0")
+
+[node name="MeleeWeapon" parent="." instance=ExtResource("6_0wft8")]
+
+[node name="EnemyShield" parent="." instance=ExtResource("7_40fmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.606718)
+
+[node name="HealthBar" parent="." instance=ExtResource("7_a8vfd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.44276, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, -2.44372e-28, 0, 0, -4.37114e-08, 1, -1.67037e-22, -1, -4.37114e-08, -1.49101e-28, 0.0150902, -0.67037)
+shape = SubResource("CylinderShape3D_ar31c")
+
+[connection signal="property_list_changed" from="EnemyEffects" to="EnemyEffects" method="on_property_changed"]

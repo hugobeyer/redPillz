@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnf35fdkgqtkc"]
+
+[ext_resource type="Material" uid="uid://dd6dxkv54psg8" path="res://_materials/debug/emissive_debug_mat.tres" id="1_2w26i"]
+[ext_resource type="CylinderMesh" uid="uid://dcqmf4tb154px" path="res://_meshes/debug/cylinder_mesh.tres" id="2_avv0o"]
+
+[node name="CylDebug" type="Node3D"]
+
+[node name="ScaleMesh" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ScaleMesh"]
+material_override = ExtResource("1_2w26i")
+cast_shadow = 0
+instance_shader_parameters/emissive_color = Color(1, 0, 0, 1)
+mesh = ExtResource("2_avv0o")
+skeleton = NodePath("../..")

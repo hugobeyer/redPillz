@@ -1,0 +1,304 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1hxjm7h8wm7d"]
+
+[ext_resource type="PackedScene" uid="uid://c4bmms83sqyvi" path="res://_assets/floorpiece.tscn" id="1_m2pau"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CSGBakedMeshInstance3D" parent="." instance=ExtResource("1_m2pau")]
+
+[node name="CSGBakedMeshInstance3D4" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -64)
+
+[node name="CSGBakedMeshInstance3D2" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -64, 0, 0)
+
+[node name="CSGBakedMeshInstance3D3" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -64, 0, -64)
+
+[node name="CSGBakedMeshInstance3D5" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -128)
+
+[node name="CSGBakedMeshInstance3D6" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -192)
+
+[node name="CSGBakedMeshInstance3D7" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -64, 0, -128)
+
+[node name="CSGBakedMeshInstance3D8" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -64, 0, -192)
+
+[node name="CSGBakedMeshInstance3D9" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 128, 0, -128)
+
+[node name="CSGBakedMeshInstance3D10" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 128, 0, -192)
+
+[node name="CSGBakedMeshInstance3D11" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 64, 0, -128)
+
+[node name="CSGBakedMeshInstance3D12" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 64, 0, -192)
+
+[node name="CSGBakedMeshInstance3D13" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 128, 0, 0)
+
+[node name="CSGBakedMeshInstance3D14" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 128, 0, -64)
+
+[node name="CSGBakedMeshInstance3D15" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 64, 0, 0)
+
+[node name="CSGBakedMeshInstance3D16" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 64, 0, -64)
+
+[node name="CSGBakedMeshInstance3D17" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 128, 0, 128)
+
+[node name="CSGBakedMeshInstance3D18" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 128, 0, 64)
+
+[node name="CSGBakedMeshInstance3D19" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 64, 0, 128)
+
+[node name="CSGBakedMeshInstance3D20" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 64, 0, 64)
+
+[node name="CSGBakedMeshInstance3D21" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 128)
+
+[node name="CSGBakedMeshInstance3D22" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 64)
+
+[node name="CSGBakedMeshInstance3D23" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -64, 0, 128)
+
+[node name="CSGBakedMeshInstance3D24" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -64, 0, 64)
+
+[node name="CSGBakedMeshInstance3D25" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -128, 0, 128)
+
+[node name="CSGBakedMeshInstance3D26" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -128, 0, 64)
+
+[node name="CSGBakedMeshInstance3D27" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -192, 0, 128)
+
+[node name="CSGBakedMeshInstance3D28" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -192, 0, 64)
+
+[node name="CSGBakedMeshInstance3D29" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -128, 0, 0)
+
+[node name="CSGBakedMeshInstance3D30" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -128, 0, -64)
+
+[node name="CSGBakedMeshInstance3D31" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -192, 0, 0)
+
+[node name="CSGBakedMeshInstance3D32" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -192, 0, -64)
+
+[node name="CSGBakedMeshInstance3D33" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -128, 0, -128)
+
+[node name="CSGBakedMeshInstance3D34" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -128, 0, -192)
+
+[node name="CSGBakedMeshInstance3D35" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -192, 0, -128)
+
+[node name="CSGBakedMeshInstance3D36" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -192, 0, -192)
+
+[node name="CSGBakedMeshInstance3D37" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -128, 0, -256)
+
+[node name="CSGBakedMeshInstance3D38" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -128, 0, -320)
+
+[node name="CSGBakedMeshInstance3D39" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -192, 0, -256)
+
+[node name="CSGBakedMeshInstance3D40" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -192, 0, -320)
+
+[node name="CSGBakedMeshInstance3D41" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -256)
+
+[node name="CSGBakedMeshInstance3D42" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -320)
+
+[node name="CSGBakedMeshInstance3D43" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -64, 0, -256)
+
+[node name="CSGBakedMeshInstance3D44" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -64, 0, -320)
+
+[node name="CSGBakedMeshInstance3D45" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 128, 0, -256)
+
+[node name="CSGBakedMeshInstance3D46" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 128, 0, -320)
+
+[node name="CSGBakedMeshInstance3D47" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 64, 0, -256)
+
+[node name="CSGBakedMeshInstance3D48" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 64, 0, -320)
+
+[node name="CSGBakedMeshInstance3D49" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 256, 0, -128)
+
+[node name="CSGBakedMeshInstance3D50" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 320, 0, -128)
+
+[node name="CSGBakedMeshInstance3D51" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 256, 0, -192)
+
+[node name="CSGBakedMeshInstance3D52" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 320, 0, -192)
+
+[node name="CSGBakedMeshInstance3D61" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 256, 0, -256)
+
+[node name="CSGBakedMeshInstance3D62" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 320, 0, -256)
+
+[node name="CSGBakedMeshInstance3D63" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 256, 0, -320)
+
+[node name="CSGBakedMeshInstance3D64" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 320, 0, -320)
+
+[node name="CSGBakedMeshInstance3D65" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -128, 0, 256)
+
+[node name="CSGBakedMeshInstance3D66" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -128, 0, 192)
+
+[node name="CSGBakedMeshInstance3D67" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -192, 0, 256)
+
+[node name="CSGBakedMeshInstance3D68" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -192, 0, 192)
+
+[node name="CSGBakedMeshInstance3D69" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 256)
+
+[node name="CSGBakedMeshInstance3D70" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 192)
+
+[node name="CSGBakedMeshInstance3D71" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -64, 0, 256)
+
+[node name="CSGBakedMeshInstance3D72" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -64, 0, 192)
+
+[node name="CSGBakedMeshInstance3D73" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 128, 0, 256)
+
+[node name="CSGBakedMeshInstance3D74" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 128, 0, 192)
+
+[node name="CSGBakedMeshInstance3D75" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 64, 0, 256)
+
+[node name="CSGBakedMeshInstance3D76" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 64, 0, 192)
+
+[node name="CSGBakedMeshInstance3D77" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 256, 0, 256)
+
+[node name="CSGBakedMeshInstance3D78" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 320, 0, 256)
+
+[node name="CSGBakedMeshInstance3D79" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 256, 0, 192)
+
+[node name="CSGBakedMeshInstance3D80" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 320, 0, 192)
+
+[node name="CSGBakedMeshInstance3D53" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 256, 0, 0)
+
+[node name="CSGBakedMeshInstance3D54" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 320, 0, 0)
+
+[node name="CSGBakedMeshInstance3D55" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 256, 0, -64)
+
+[node name="CSGBakedMeshInstance3D56" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 320, 0, -64)
+
+[node name="CSGBakedMeshInstance3D57" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 256, 0, 128)
+
+[node name="CSGBakedMeshInstance3D58" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 320, 0, 128)
+
+[node name="CSGBakedMeshInstance3D59" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 256, 0, 64)
+
+[node name="CSGBakedMeshInstance3D60" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 320, 0, 64)
+
+[node name="CSGBakedMeshInstance3D81" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -256, 0, -128)
+
+[node name="CSGBakedMeshInstance3D82" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -192, 0, -128)
+
+[node name="CSGBakedMeshInstance3D83" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -256, 0, -192)
+
+[node name="CSGBakedMeshInstance3D84" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -192, 0, -192)
+
+[node name="CSGBakedMeshInstance3D85" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -256, 0, -256)
+
+[node name="CSGBakedMeshInstance3D86" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -192, 0, -256)
+
+[node name="CSGBakedMeshInstance3D87" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -256, 0, -320)
+
+[node name="CSGBakedMeshInstance3D88" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -192, 0, -320)
+
+[node name="CSGBakedMeshInstance3D89" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -256, 0, 256)
+
+[node name="CSGBakedMeshInstance3D90" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -192, 0, 256)
+
+[node name="CSGBakedMeshInstance3D91" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -256, 0, 192)
+
+[node name="CSGBakedMeshInstance3D92" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -192, 0, 192)
+
+[node name="CSGBakedMeshInstance3D93" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -256, 0, 0)
+
+[node name="CSGBakedMeshInstance3D94" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -192, 0, 0)
+
+[node name="CSGBakedMeshInstance3D95" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -256, 0, -64)
+
+[node name="CSGBakedMeshInstance3D96" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -192, 0, -64)
+
+[node name="CSGBakedMeshInstance3D97" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -256, 0, 128)
+
+[node name="CSGBakedMeshInstance3D98" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -192, 0, 128)
+
+[node name="CSGBakedMeshInstance3D99" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -256, 0, 64)
+
+[node name="CSGBakedMeshInstance3D100" parent="." instance=ExtResource("1_m2pau")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -192, 0, 64)

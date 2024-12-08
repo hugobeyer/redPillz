@@ -1,0 +1,107 @@
+[gd_scene load_steps=11 format=3 uid="uid://d3iotrkckue1d"]
+
+[ext_resource type="Script" path="res://_scripts/grenade.gd" id="1_l3j8t"]
+[ext_resource type="PackedScene" uid="uid://t30lq63r3ii6" path="res://_scenes/weapons/grenade_explode.tscn" id="2_ffhlh"]
+[ext_resource type="Shader" path="res://_shaders/custom/custom_frag_actors.gdshader" id="3_3f1f3"]
+
+[sub_resource type="Curve" id="Curve_3f1f3"]
+_data = [Vector2(0, 0), 0.0, 45.5887, 0, 0, Vector2(0.0636364, 1), 1.27275, 1.27275, 0, 0, Vector2(0.235537, 0.956044), -1.48859, -1.48859, 0, 0, Vector2(0.705785, 0.021978), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="Curve" id="Curve_cpmo7"]
+min_value = 0.66
+max_value = 3.0
+_data = [Vector2(0, 0.66), 0.0, 0.0, 0, 0, Vector2(0.135537, 1.35429), 5.07852, 5.07852, 0, 0, Vector2(0.621488, 2.46), 0.0, 0.0, 0, 0, Vector2(0.823967, 3), 0.888976, 0.888976, 0, 0, Vector2(1, 3), 0.0406417, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ffhlh"]
+radius = 0.418
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cpmo7"]
+render_priority = 0
+shader = ExtResource("3_3f1f3")
+shader_parameter/color_top = Color(0.46875, 0.177612, 0.436907, 1)
+shader_parameter/color_bottom = Color(0.320835, 0.13913, 0.378906, 1)
+shader_parameter/specular_color = Color(1, 1, 1, 1)
+shader_parameter/fresnel_color = Color(1, 1, 1, 1)
+shader_parameter/vertex_color_mix = 0.0
+shader_parameter/blend_mode = 0
+shader_parameter/gradient_rotation_mode = 1
+shader_parameter/gradient_offset = -0.223
+shader_parameter/gradient_smoothness = 4.08
+shader_parameter/diffuse_contrast = 0.782
+shader_parameter/diffuse_wrap = 0.0
+shader_parameter/diffuse_offset = -1.0
+shader_parameter/specular_intensity = 2.0
+shader_parameter/specular_size = 0.07
+shader_parameter/specular_smoothness = 0.07
+shader_parameter/specular_offset = -0.027
+shader_parameter/fresnel_power = 3.449
+shader_parameter/fresnel_intensity = 2.0
+shader_parameter/fresnel_contrast = 2.364
+shader_parameter/fresnel_offset = 0.261
+
+[sub_resource type="SphereMesh" id="SphereMesh_3f1f3"]
+radius = 0.4
+height = 0.8
+radial_segments = 9
+rings = 7
+
+[sub_resource type="Gradient" id="Gradient_3f1f3"]
+resource_local_to_scene = true
+interpolation_color_space = 2
+offsets = PackedFloat32Array(0.178752, 0.204047, 0.231029, 0.29511, 0.331366, 0.390388, 0.515177, 0.695616)
+colors = PackedColorArray(1, 0.515625, 0, 0, 1, 0.652344, 0.5, 1, 1.00892, 0.344189, 0.314358, 1, 0.750326, 0.172149, 0.30709, 0.690888, 0.670085, 0.108231, 0.298297, 0.591285, 0.578125, 0, 0.284546, 0.47451, 0.555892, 0.00306386, 0.22888, 0.251674, 0.53125, 0, 0.161865, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cpmo7"]
+gradient = SubResource("Gradient_3f1f3")
+width = 256
+height = 256
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Grenade" type="RigidBody3D"]
+collision_layer = 128
+collision_mask = 14
+input_ray_pickable = false
+mass = 200.0
+gravity_scale = 3.0
+can_sleep = false
+linear_damp = 1.0
+angular_damp = 0.5
+script = ExtResource("1_l3j8t")
+explosion_radius = 36.0
+explosion_force = 100.0
+fuse_time = 1.7
+explosion_effect_scene = ExtResource("2_ffhlh")
+effect_animation_time = 1.75
+glow_speed = 0.125
+pixel_size_start = 0.01
+pixel_size_end = 0.03
+modulate_start = Color(1, 1, 1, 1)
+modulate_end = Color(1, 1, 1, 1)
+pulse_curve = SubResource("Curve_3f1f3")
+speed_curve = SubResource("Curve_cpmo7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_ffhlh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("ShaderMaterial_cpmo7")
+instance_shader_parameters/lerp_color = Color(0.854803, 0.00184553, 0.99804, 1)
+instance_shader_parameters/lerp_displace_normal = 4.75e-08
+instance_shader_parameters/lerp_wave = 1.0
+instance_shader_parameters/lerp_wave_contrast = 4.0
+instance_shader_parameters/lerp_wave_freq = 12.0
+instance_shader_parameters/lerp_wave_offset = 32.0
+instance_shader_parameters/lerp_wave_type = 4
+instance_shader_parameters/wave_range_lerp = -0.396
+mesh = SubResource("SphereMesh_3f1f3")
+
+[node name="GrenadeGlow" type="Sprite3D" parent="."]
+cast_shadow = 0
+pixel_size = 0.0125
+billboard = 1
+no_depth_test = true
+texture = SubResource("GradientTexture2D_cpmo7")

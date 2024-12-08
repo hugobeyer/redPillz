@@ -1,0 +1,95 @@
+[gd_resource type="VisualShader" load_steps=7 format=3 uid="uid://cmimjttxtl3tb"]
+
+[sub_resource type="VisualShaderNodeBooleanParameter" id="VisualShaderNodeBooleanParameter_f1ovi"]
+parameter_name = "use_grid"
+qualifier = 2
+default_value_enabled = true
+default_value = true
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_2awdj"]
+parameter_name = "BaseColor"
+qualifier = 2
+default_value_enabled = true
+default_value = Color(0.332187, 0.696, 0.32016, 1)
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_6ldn0"]
+default_input_values = [0, Quaternion(0, 0, 0, 0)]
+op_type = 2
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_haci7"]
+default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(1, 1, 1, 1), 2, 0.5]
+op_type = 6
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_c1138"]
+parameter_name = "ColorModulate"
+qualifier = 2
+hint = 1
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_e2vrl"]
+parameter_name = "AddColor"
+qualifier = 2
+default_value_enabled = true
+default_value = Color(0.056, 1, 0, 1)
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_toon, specular_disabled, unshaded, ambient_light_disabled, fog_disabled;
+
+
+// Varyings
+varying vec2 var_screen;
+
+instance uniform vec4 BaseColor : source_color = vec4(0.332187, 0.696000, 0.320160, 1.000000);
+instance uniform vec4 AddColor : source_color = vec4(0.056000, 1.000000, 0.000000, 1.000000);
+instance uniform float ColorModulate : hint_range(0, 1);
+
+
+
+void vertex() {
+	var_screen = vec2(0.0);
+}
+
+void fragment() {
+// ColorParameter:2
+	vec4 n_out2p0 = BaseColor;
+
+
+// ColorParameter:37
+	vec4 n_out37p0 = AddColor;
+
+
+// FloatParameter:35
+	float n_out35p0 = ColorModulate;
+
+
+// Mix:34
+	vec4 n_out34p0 = mix(n_out2p0, n_out37p0, n_out35p0);
+
+
+// Output:0
+	ALBEDO = vec3(n_out34p0.xyz);
+
+
+}
+"
+graph_offset = Vector2(-585.801, -496.499)
+modes/diffuse = 3
+modes/specular = 2
+flags/unshaded = true
+flags/ambient_light_disabled = true
+flags/fog_disabled = true
+varyings/screen = "0,3"
+nodes/fragment/0/position = Vector2(3340, -120)
+nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_2awdj")
+nodes/fragment/2/position = Vector2(-360, -760)
+nodes/fragment/13/node = SubResource("VisualShaderNodeBooleanParameter_f1ovi")
+nodes/fragment/13/position = Vector2(-380, 280)
+nodes/fragment/32/node = SubResource("VisualShaderNodeVectorDecompose_6ldn0")
+nodes/fragment/32/position = Vector2(940, 0)
+nodes/fragment/34/node = SubResource("VisualShaderNodeMix_haci7")
+nodes/fragment/34/position = Vector2(660, -380)
+nodes/fragment/35/node = SubResource("VisualShaderNodeFloatParameter_c1138")
+nodes/fragment/35/position = Vector2(-340, -20)
+nodes/fragment/37/node = SubResource("VisualShaderNodeColorParameter_e2vrl")
+nodes/fragment/37/position = Vector2(-340, -540)
+nodes/fragment/connections = PackedInt32Array(2, 0, 34, 0, 35, 0, 34, 2, 34, 0, 0, 0, 34, 0, 32, 0, 37, 0, 34, 1)

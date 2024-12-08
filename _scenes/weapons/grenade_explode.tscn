@@ -1,0 +1,747 @@
+[gd_scene load_steps=11 format=3 uid="uid://t30lq63r3ii6"]
+
+[ext_resource type="Shader" uid="uid://cygtepk8ih3xr" path="res://_shaders/fx/grenade_explode.tres" id="1_4p6ke"]
+[ext_resource type="Texture2D" uid="uid://q848ch3cdxap" path="res://_textures/fx/bomb_worley_H0.png" id="2_63tqn"]
+[ext_resource type="Texture2D" uid="uid://dyf5hpmiahrkh" path="res://_textures/fx/bomb_worley_N0.png" id="3_hyt5q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pntop"]
+render_priority = 0
+shader = ExtResource("1_4p6ke")
+shader_parameter/Cut = 0.0
+shader_parameter/Height = ExtResource("2_63tqn")
+shader_parameter/Normal = ExtResource("3_hyt5q")
+
+[sub_resource type="SphereMesh" id="SphereMesh_4oxol"]
+uv2_padding = 0.0
+radius = 2.0
+height = 4.0
+radial_segments = 36
+rings = 40
+
+[sub_resource type="TorusMesh" id="TorusMesh_63tqn"]
+inner_radius = 2.0
+outer_radius = 2.055
+rings = 42
+ring_segments = 20
+
+[sub_resource type="TorusMesh" id="TorusMesh_4oxol"]
+inner_radius = 2.0
+outer_radius = 2.05
+rings = 42
+ring_segments = 20
+
+[sub_resource type="Animation" id="Animation_hyt5q"]
+length = 1.75
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:instance_shader_parameters/Time1")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshInstance3D:instance_shader_parameters/Smoke")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MeshInstance3D:instance_shader_parameters/Smoke2")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.214844, 0.214844, 0.214844, 1), Color(0.214844, 0.214844, 0.214844, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MeshInstance3D:instance_shader_parameters/Fire")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0.585938, 0, 1), Color(1, 0.585938, 0, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MeshInstance3D2:instance_shader_parameters/Fire")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0.585938, 0, 1), Color(1, 0.585938, 0, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MeshInstance3D2:instance_shader_parameters/Smoke")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MeshInstance3D2:instance_shader_parameters/Smoke2")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.203125, 0.203125, 0.203125, 1), Color(0.203125, 0.203125, 0.203125, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("MeshInstance3D2:instance_shader_parameters/Time1")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("MeshInstance3D2:instance_shader_parameters/UVY")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 1.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("MeshInstance3D2:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 1.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("MeshInstance3D2:scale")
+tracks/11/interp = 2
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 1.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 1, 1)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("OmniLight3D:light_energy")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 1.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 1.0]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("OmniLight3D:light_color")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 1.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("OmniLight3D:omni_range")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 1.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [5.0, 5.0]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("OmniLight3D:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 1.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("MeshInstance3D3:scale")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("MeshInstance3D3:position")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("MeshInstance3D3:instance_shader_parameters/Fire")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.585938, 0, 1)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("MeshInstance3D3:instance_shader_parameters/Smoke")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("MeshInstance3D3:instance_shader_parameters/Smoke2")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.203125, 0.203125, 0.203125, 1)]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("MeshInstance3D3:instance_shader_parameters/Time1")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("MeshInstance3D3:instance_shader_parameters/UVY")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("MeshInstance3D:material_override:shader_parameter/Cut")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("MeshInstance3D:instance_shader_parameters/explosion_phase")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("MeshInstance3D2:instance_shader_parameters/explosion_phase")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("MeshInstance3D3:instance_shader_parameters/explosion_phase")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_63tqn"]
+resource_name = "explode"
+length = 1.75
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:instance_shader_parameters/Time1")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.75),
+"transitions": PackedFloat32Array(0.450625, 1),
+"update": 0,
+"values": [0.482001, -0.426999]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.75),
+"transitions": PackedFloat32Array(0.450625, 1),
+"update": 0,
+"values": [Vector3(0, 1, 0), Vector3(0, 10, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshInstance3D:instance_shader_parameters/Smoke")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.85, 1.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0.746094, 0.366216, 0.180695, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MeshInstance3D:instance_shader_parameters/Smoke2")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.85, 1.75),
+"transitions": PackedFloat32Array(1, 1, 0.90125, 1),
+"update": 0,
+"values": [Color(0.0976563, 0.0976563, 0.0976563, 1), Color(1, 0.492188, 0, 1), Color(0.265625, 0.265625, 0.265625, 1), Color(0.273438, 0.273438, 0.273438, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MeshInstance3D:instance_shader_parameters/Fire")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.15, 1.75),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 0.632843, 0.113281, 1), Color(0, 0, 0, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MeshInstance3D2:instance_shader_parameters/Fire")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.15, 1.75),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 0.585938, 0, 1), Color(1, 0.585937, 0, 1), Color(0, 0, 0, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MeshInstance3D2:instance_shader_parameters/Smoke")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.8, 1.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 0.43048, 0.152344, 1), Color(0, 0, 0, 1), Color(0.0429688, 0.0429688, 0.0429688, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MeshInstance3D2:instance_shader_parameters/Smoke2")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.797152, 1.75),
+"transitions": PackedFloat32Array(1, 1, 0.90125, 1),
+"update": 0,
+"values": [Color(0.167969, 0.167969, 0.167969, 1), Color(1, 0.706604, 0.0117188, 1), Color(0.261719, 0.261719, 0.261719, 1), Color(0.257813, 0.257813, 0.257813, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("MeshInstance3D2:instance_shader_parameters/Time1")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1.75),
+"transitions": PackedFloat32Array(0.554785, 1),
+"update": 0,
+"values": [-0.031, 0.103]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("MeshInstance3D2:instance_shader_parameters/UVY")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.259, 0.261]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("MeshInstance3D2:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 1.75),
+"transitions": PackedFloat32Array(0.707107, 1),
+"update": 0,
+"values": [Vector3(0, 0.5, 0), Vector3(0, 1, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("MeshInstance3D2:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.15, 1.75),
+"transitions": PackedFloat32Array(1, 0.57435, 1),
+"update": 0,
+"values": [Vector3(0.5, 0.5, 0.5), Vector3(2.5, 2.5, 2.5), Vector3(5.405, 5.405, 5.405)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("OmniLight3D:light_energy")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.65, 1.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 64.0, 9.97, 1.0]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("OmniLight3D:light_color")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.65, 1.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 0.762268, 0.199219, 1), Color(1, 0.601321, 0.28125, 1), Color(0, 0, 0, 1)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("OmniLight3D:omni_range")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 0.15, 1.75),
+"transitions": PackedFloat32Array(1, 1.7411, 1),
+"update": 0,
+"values": [5.437, 16.0, 5.0]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("OmniLight3D:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 1.75),
+"transitions": PackedFloat32Array(0.757858, 1),
+"update": 0,
+"values": [Vector3(0, 2, 0), Vector3(0, 2, 0)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("MeshInstance3D3:instance_shader_parameters/Fire")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 0.15, 1.75),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 0.585938, 0, 1), Color(1, 0.585937, 0, 1), Color(0, 0, 0, 1)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("MeshInstance3D3:instance_shader_parameters/Smoke")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.9, 1.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0.746094, 0.366216, 0.180695, 1), Color(0, 0, 0, 1), Color(0.0429688, 0.0429688, 0.0429688, 1)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("MeshInstance3D3:instance_shader_parameters/Smoke2")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.897152, 1.75),
+"transitions": PackedFloat32Array(1, 1, 0.90125, 1),
+"update": 0,
+"values": [Color(0.167969, 0.167969, 0.167969, 1), Color(1, 0.492188, 0, 1), Color(0.3125, 0.3125, 0.3125, 1), Color(0.28125, 0.28125, 0.28125, 1)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("MeshInstance3D3:instance_shader_parameters/Time1")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0, 1.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.380999, 0.0870008]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("MeshInstance3D3:instance_shader_parameters/UVY")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0, 1.75),
+"transitions": PackedFloat32Array(0.615572, 1),
+"update": 0,
+"values": [0.51, 0.106]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("MeshInstance3D3:position")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0, 1.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1, 0), Vector3(0, 2, 0)]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("MeshInstance3D3:scale")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0, 0.15, 1.75),
+"transitions": PackedFloat32Array(0.615572, 0.732044, 1),
+"update": 0,
+"values": [Vector3(0.5, 0.5, 0.5), Vector3(1.705, 1.705, 1.705), Vector3(4, 4, 4)]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("MeshInstance3D:material_override:shader_parameter/Cut")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0, 1.75),
+"transitions": PackedFloat32Array(2.54912, 1),
+"update": 0,
+"values": [0.0, 0.685]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("MeshInstance3D:instance_shader_parameters/explosion_phase")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0, 0.15, 1.75),
+"transitions": PackedFloat32Array(1, 0.63728, 0.757858),
+"update": 0,
+"values": [0.0, 1.215, 0.01]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("MeshInstance3D2:instance_shader_parameters/explosion_phase")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.8, 1.75),
+"transitions": PackedFloat32Array(1, 0.757858, 1, 0.574349),
+"update": 0,
+"values": [0.565, 0.465, 0.093, 0.032]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("MeshInstance3D3:instance_shader_parameters/explosion_phase")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.85, 1.75),
+"transitions": PackedFloat32Array(1, 0.615572, 1, 1),
+"update": 0,
+"values": [0.01, 0.43, 0.111, 0.179]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mw2ne"]
+_data = {
+"RESET": SubResource("Animation_hyt5q"),
+"explode": SubResource("Animation_63tqn")
+}
+
+[node name="GrenadeExplode" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+process_mode = 3
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_pntop")
+cast_shadow = 0
+instance_shader_parameters/Fire = Color(1, 0.585938, 0, 1)
+instance_shader_parameters/Smoke = Color(0, 0, 0, 1)
+instance_shader_parameters/Smoke2 = Color(0.214844, 0.214844, 0.214844, 1)
+instance_shader_parameters/Time1 = 0.0
+instance_shader_parameters/UVX = 1.0
+instance_shader_parameters/UVY = 1.0
+instance_shader_parameters/explosion_phase = 0.0
+mesh = SubResource("SphereMesh_4oxol")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+process_mode = 3
+material_override = SubResource("ShaderMaterial_pntop")
+cast_shadow = 0
+instance_shader_parameters/Fire = Color(1, 0.585938, 0, 1)
+instance_shader_parameters/Smoke = Color(0, 0, 0, 1)
+instance_shader_parameters/Smoke2 = Color(0.203125, 0.203125, 0.203125, 1)
+instance_shader_parameters/Time1 = 0.0
+instance_shader_parameters/UVX = 3.0
+instance_shader_parameters/UVY = 1.0
+instance_shader_parameters/explosion_phase = 0.0
+mesh = SubResource("TorusMesh_63tqn")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+process_mode = 3
+material_override = SubResource("ShaderMaterial_pntop")
+cast_shadow = 0
+instance_shader_parameters/Fire = Color(1, 0.585938, 0, 1)
+instance_shader_parameters/Smoke = Color(0, 0, 0, 1)
+instance_shader_parameters/Smoke2 = Color(0.203125, 0.203125, 0.203125, 1)
+instance_shader_parameters/Time1 = 0.0
+instance_shader_parameters/UVX = 2.0
+instance_shader_parameters/UVY = 1.0
+instance_shader_parameters/explosion_phase = 1.0
+mesh = SubResource("TorusMesh_4oxol")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 3
+libraries = {
+"": SubResource("AnimationLibrary_mw2ne")
+}
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_size = 5.0
+omni_attenuation = -0.01

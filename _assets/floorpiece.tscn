@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=4 uid="uid://c4bmms83sqyvi"]
+
+[ext_resource type="Shader" uid="uid://c1wmyt1mpie5d" path="res://_shaders/grounds/custom_gr_tex.tres" id="1_p2vlp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vp5ut"]
+render_priority = 0
+shader = ExtResource("1_p2vlp")
+shader_parameter/ColorBot = Color(0.150253, 0.138443, 0.167969, 1)
+shader_parameter/ColorTop = Color(0.2408, 0.24864, 0.28, 1)
+shader_parameter/tiling = 2.0
+shader_parameter/ColorTop2 = Color(0.26, 0.26, 0.26, 1)
+shader_parameter/tiling2 = 0.535
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_pn3yj"]
+_surfaces = [{
+"aabb": AABB(-16, -1, -16, 32, 2, 32),
+"attribute_data": PackedByteArray("AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAA"),
+"format": 34359738391,
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("AACAQQAAgD8AAIBBAACAQQAAgD8AAIDBAACAQQAAgL8AAIDBAACAQQAAgL8AAIDBAACAQQAAgL8AAIBBAACAQQAAgD8AAIBBAACAQQAAgD8AAIBBAACAwQAAgD8AAIBBAACAwQAAgD8AAIDBAACAwQAAgD8AAIDBAACAQQAAgD8AAIDBAACAQQAAgD8AAIBBAACAQQAAgD8AAIBBAACAQQAAgL8AAIBBAACAwQAAgL8AAIBBAACAwQAAgL8AAIBBAACAwQAAgD8AAIBBAACAQQAAgD8AAIBBAACAwQAAgD8AAIDBAACAwQAAgD8AAIBBAACAwQAAgL8AAIBBAACAwQAAgL8AAIBBAACAwQAAgL8AAIDBAACAwQAAgD8AAIDBAACAwQAAgL8AAIBBAACAQQAAgL8AAIBBAACAQQAAgL8AAIDBAACAQQAAgL8AAIDBAACAwQAAgL8AAIDBAACAwQAAgL8AAIBBAACAQQAAgL8AAIDBAACAQQAAgD8AAIDBAACAwQAAgD8AAIDBAACAwQAAgD8AAIDBAACAwQAAgL8AAIDBAACAQQAAgL8AAIDB////f/9//n////9//3/+f////3//f/5/////f/9//n////9//3/+f////3//f/5//3//////AAD/f/////8AAP9//////wAA/3//////AAD/f/////8AAP9//////wAA/3//fwAA/z//f/9/AAD/P/9//38AAP8//3//fwAA/z//f/9/AAD/P/9//38AAP8/AAD/f/9//n8AAP9//3/+fwAA/3//f/5/AAD/f/9//n8AAP9//3/+fwAA/3//f/5//38AAP//AAD/fwAA//8AAP9/AAD//wAA/38AAP//AAD/fwAA//8AAP9/AAD//wAA/////wAA/z//////AAD/P/////8AAP8//////wAA/z//////AAD/P/////8AAP8/")
+}]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_tr12f"]
+points = PackedVector3Array(-16, -1, -16, -16, 1, -16, 16, -1, -16, -16, -1, 16, -16, 1, 16, 16, 1, -16, 16, -1, 16, 16, 1, 16)
+
+[node name="StaticBody3D" type="StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+collision_layer = 4
+collision_mask = 5275
+input_ray_pickable = false
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+
+[node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, -1, 16)
+material_override = SubResource("ShaderMaterial_vp5ut")
+mesh = SubResource("ArrayMesh_pn3yj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, -1, 16)
+shape = SubResource("ConvexPolygonShape3D_tr12f")

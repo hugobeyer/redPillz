@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dx1rexfar2s33"]
+
+[ext_resource type="PackedScene" uid="uid://dsgwuqn36l1io" path="res://_meshes/capsule.fbx" id="1_g6v1x"]
+[ext_resource type="Material" uid="uid://cq4xpar1scfxp" path="res://_materials/generic_actort_mat.tres" id="2_h03lp"]
+
+[node name="capsule" instance=ExtResource("1_g6v1x")]
+
+[node name="Roundcube" parent="." index="0"]
+material_override = ExtResource("2_h03lp")
+instance_shader_parameters/Srgb = false
+instance_shader_parameters/Use_VertexColor = false

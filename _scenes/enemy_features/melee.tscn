@@ -1,0 +1,106 @@
+[gd_scene load_steps=10 format=4 uid="uid://dwpsppfskic5x"]
+
+[ext_resource type="Script" path="res://_scripts/include/enemy_melee.gd" id="1_dw47a"]
+[ext_resource type="AnimationLibrary" uid="uid://i4t2law61ppy" path="res://_animations/enemy_animation_library.tres" id="2_yaban"]
+[ext_resource type="Shader" path="res://_shaders/custom/custom_frag_actors.gdshader" id="3_yaban"]
+[ext_resource type="Shader" uid="uid://bdsv7soxur1mu" path="res://_shaders/fx/sword_swing.tres" id="4_68p2o"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_68p2o"]
+render_priority = 0
+shader = ExtResource("3_yaban")
+shader_parameter/color_top = Color(0.585938, 0.267792, 0.267792, 1)
+shader_parameter/color_bottom = Color(0.726563, 0.726563, 0.726563, 1)
+shader_parameter/specular_color = Color(0.835938, 0.930786, 1, 1)
+shader_parameter/fresnel_color = Color(0.164063, 0.164063, 0.164063, 1)
+shader_parameter/vertex_color_mix = 1.0
+shader_parameter/blend_mode = 0
+shader_parameter/gradient_rotation_mode = 1
+shader_parameter/gradient_offset = 0.01
+shader_parameter/gradient_smoothness = 0.0
+shader_parameter/diffuse_contrast = 0.165
+shader_parameter/diffuse_wrap = 1.205
+shader_parameter/diffuse_offset = -0.102
+shader_parameter/specular_intensity = 2.0
+shader_parameter/specular_size = 0.066
+shader_parameter/specular_smoothness = 0.038
+shader_parameter/specular_offset = 0.036
+shader_parameter/fresnel_power = 2.18
+shader_parameter/fresnel_intensity = 1.0
+shader_parameter/fresnel_contrast = 1.268
+shader_parameter/fresnel_offset = 0.511
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pye1y"]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_f1vn7"]
+resource_name = "simple_sword1_simple_sword"
+_surfaces = [{
+"aabb": AABB(-1.33392, -0.546452, -3.2258, 2.66783, 1.0929, 10.6087),
+"attribute_data": PackedByteArray("/4gY/zxY7VH/iBj/g6ADgf+IGP9b/j5eolcb/zBHwqeiVxv/PFiRMaJXG///3T5e/4YS/4BL7VH/hhL/Pq0Dgf+GEv/ByNP9/4YS/4BLkTH/hhL/61PCp/+GEv8d6dP9/4wf//kBCv7/jB//g6B9Kv+MH/9b/v8F/4sd//kBrt3/ix3/MEdJ/v+LHf//3f8F/4cW/7QOCv7/hxb/Pq19Kv+HFv/ByJWl/4cV/7QOrt3/hxX/61NJ/v+HFf8d6ZWlqFkV/+q1wFWoWRX/wci00cxrFP+XXAbTzGsU/x3ptNGpXB3/L6nAValcHf9b/h4y/4gY/9xPBtP/iBj//90eMhEUIP9VGdj7FRES/xyeOc8VERL/jtrWYhUREv+hqsPRFRES/wjOYGUYFRj/xp9bhBgVGP/m2PgXGBQX/6GqCYf+hA7/oaon/v6EDv8JzsSRWY///wECJmEVERL/J7c5zxUREv+DwdZiFxQX/wjOphpShPr/hU8nYSAXGP9/tVuEIBcY/y3D+BcQEx//lGvY+1iO///5eWliWI7//wl8amJNe+n/B3rqnk176v/8e+qeFxUc/+d7Hf4VFBz/IXod/lmQ///LKWpiWZD//7snaWJPfu//vinqnk9+7//IJ+qeEBMe/6gpHf4YFR//4icd/k9+7v8tl1mfSHPZ/+5EWZ9Ea8n/tifIG0NqyP/RKcgb+oIO/6GqI+n+gw7/oary4/+EDv8Izo93/4QO/wjOv3z+hA7/L5Hi4/6EDv975393/oQO/6qSver+hA7/AOZZfv+EDv+WtH93/4QO/xPE4uP+hA7/EbZZfv6EDv+ZwrzqRGvJ/w98yBtDasj/9HnIG1mP///DoSdhUoT6/z9UJmFIc9n/1l5an09+7v+YDFqfEhQg/26K1/sREx//MDjX+/+IGP88WO1R/4gY/zxY7VH/iBj/g6ADgf+IGP9b/j5e/4gY/1v+Pl6iVxv/MEfCp6JXG/88WJExolcb///dPl7/hhL/gEvtUf+GEv8+rQOB/4YS/z6tA4H/hhL/wcjT/f+GEv+AS5Ex/4YS/4BLkTH/hhL/61PCp/+GEv/rU8Kn/4YS/x3p0/3/hhL/HenT/f+MH//5AQr+/4wf//kBCv7/jB//g6B9Kv+MH/9b/v8F/4wf/1v+/wX/ix3/+QGu3f+LHf8wR0n+/4sd///d/wX/hxb/tA4K/v+HFv8+rX0q/4cW/z6tfSr/hxb/wciVpf+HFf+0Dq7d/4cV/7QOrt3/hxX/61NJ/v+HFf/rU0n+/4cV/x3plaX/hxX/HemVpahZFf/qtcBVqFkV/+q1wFWoWRX/wci00ahZFf/ByLTRqFkV/8HItNGoWRX/wci00cxrFP+XXAbTzGsU/5dcBtPMaxT/Hem00cxrFP8d6bTRqVwd/y+pwFWpXB3/L6nAValcHf8vqcBVqVwd/y+pwFWpXB3/W/4eMqlcHf9b/h4y/4gY/9xPBtP/iBj/3E8G0/+IGP/cTwbT/4gY/9xPBtP/iBj//90eMv+IGP//3R4y/4gY///dHjL/iBj//90eMhUREv8cnjnPFRES/xyeOc8VERL/jtrWYhUREv+O2tZiGBUY/8afW4QYFRj/5tj4FxgUF/+hqgmHGBQX/6GqCYcXFBf/CM6mGhcUF/8IzqYaIBcY/3+1W4QgFxj/LcP4Fw=="),
+"format": 34896613407,
+"index_count": 240,
+"index_data": PackedByteArray("LgBBADgAMQA0AFIAMQA3ADQAIAA7AFMAIAA9ADsAIQAnACMAIQAlACcAOAA/AC4AOAA6AD8AGQAXABsAGQAUABcARAAiAEcARAAkACIAAAAJAAQAAAAGAAkAHwACAAUAHwAdAAIARQApAEwAUQAyAE8ADAAVABIADAAPABUALABEAEoALAAkAEQAUgAyAFEAUgA0ADIAOgBVAD8AOgA8AFUAHgAKABoAHgADAAoAKgA5AEAAHAAHAAEAHAAYAAcANQBUAD4ANQA2AFQAKwBDACMAKwBLAEMAHgAWABAAHgAaABYAQgBNACgAHAATABgAHAANABMAQgAoAEgAUABOADMARQBJACkAUwA5ACoAUwA7ADkALQAsADAALQAkACwAIgAtACYAIgAkAC0AGQALAAgAGQAbAAsAKwAnAC8AKwAjACcADgAfABEADgAdAB8ATwAzAE4ATwAyADMANQAyADQANQAzADIANgA0ADcANgA1ADQAPAA7AD0APAA6ADsAOgA5ADsAOgA4ADkAQAA4AEEAQAA5ADgAMwA+AFAAMwA1AD4ASABDAEIASABGAEMARwBFAEQARwBJAEUATABEAEUATABKAEQASwBCAEMASwBNAEIAIQBDAEYAIQAjAEMA"),
+"lods": [0.812412, PackedByteArray("MQA3AE4ANgBOADcATgA2AFQAIAA9AEAAPABAAD0AQAA8AFUAkgCWAJgAfAB4AIIAfQBzAHkAVgBiAFwAVwBeAGMAjgBZAF0AjwCIAFoAaAB0AHAAaQBtAHUAigBkAIAAiwBbAGUAhABfAFgAhQB6AGAAjAB2AG4AjQCBAHcAhgBxAHsAhwBqAHIAmgCUAJ0AlQCbAJcAfgBmAGEAfwCDAGcAkwCZAJwAawCQAG8AbACJAJEA")],
+"material": SubResource("StandardMaterial3D_pye1y"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 158,
+"vertex_data": PackedByteArray("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")
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sietg"]
+render_priority = 0
+shader = ExtResource("4_68p2o")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ykcqj"]
+top_radius = 2.08
+bottom_radius = 3.456
+height = 0.001
+radial_segments = 32
+rings = 1
+cap_top = false
+cap_bottom = false
+
+[node name="MeleeWeapon" type="Node3D"]
+script = ExtResource("1_dw47a")
+detection_radius = 10.0
+attack_radius = 5.0
+damage_amount = 25.0
+hit_window_start = 0.225
+hit_window_end = 0.42
+knockback_force = 2000.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Root")
+libraries = {
+&"": ExtResource("2_yaban")
+}
+
+[node name="Root" type="Node3D" parent="."]
+
+[node name="MeleeMesh" type="Node3D" parent="Root"]
+transform = Transform3D(0.334933, 0.679453, 0.652811, -0.837377, 0.532285, -0.124381, -0.431993, -0.50499, 0.747239, 0, 0, 0)
+
+[node name="simple_sword" type="Node3D" parent="Root/MeleeMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.45058e-09, 0, 0.279429)
+
+[node name="simple_sword" type="MeshInstance3D" parent="Root/MeleeMesh/simple_sword"]
+transform = Transform3D(0.386, 0, 0, 0, 0.408, 0, 0, 0, 0.242, 0, 0, 0.43)
+material_override = SubResource("ShaderMaterial_68p2o")
+instance_shader_parameters/lerp_color = Color(1, 1, 1, 1)
+instance_shader_parameters/lerp_displace_normal = 0.0
+instance_shader_parameters/lerp_wave = 0.0
+instance_shader_parameters/lerp_wave_contrast = 1.0
+instance_shader_parameters/lerp_wave_freq = 1.0
+instance_shader_parameters/lerp_wave_offset = 0.0
+instance_shader_parameters/lerp_wave_type = 0
+instance_shader_parameters/wave_range_lerp = 0.0
+mesh = SubResource("ArrayMesh_f1vn7")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Root/MeleeMesh/simple_sword"]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 2.24198e-07, 9.31323e-09, -1.28226)
+material_override = SubResource("ShaderMaterial_sietg")
+instance_shader_parameters/ColorParameter = Color(0.929688, 0.95419, 1, 1)
+instance_shader_parameters/swing = 0.999
+mesh = SubResource("CylinderMesh_ykcqj")

@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1dt4pblukewh"]
+
+[ext_resource type="Script" path="res://_resources/ui/health_bar_3d.gd" id="1_o52pt"]
+
+[sub_resource type="Gradient" id="Gradient_ld7nr"]
+interpolation_color_space = 2
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_st6xh"]
+gradient = SubResource("Gradient_ld7nr")
+width = 128
+height = 16
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0n1xf"]
+gradient = SubResource("Gradient_ld7nr")
+width = 128
+height = 16
+
+[node name="HealthBar" type="Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.549, 0)
+cast_shadow = 0
+gi_mode = 0
+billboard = 1
+double_sided = false
+texture_filter = 0
+texture = SubResource("GradientTexture2D_st6xh")
+region_rect = Rect2(0, 0, 120, 50)
+script = ExtResource("1_o52pt")
+bar_width_px = 120
+bar_height_px = 24
+shake_duration = 0.3
+
+[node name="Back" type="Sprite3D" parent="."]
+cast_shadow = 0
+gi_mode = 0
+modulate = Color(0, 0, 0, 1)
+billboard = 1
+transparent = false
+double_sided = false
+texture_filter = 0
+render_priority = -1
+texture = SubResource("GradientTexture2D_0n1xf")
+region_rect = Rect2(0, 0, 120, 50)

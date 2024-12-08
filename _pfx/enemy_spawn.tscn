@@ -1,0 +1,144 @@
+[gd_scene load_steps=7 format=3 uid="uid://clas1dtbwyvcs"]
+
+[ext_resource type="Shader" uid="uid://dgqbgqm1aybex" path="res://_shaders/fx/enemy_spawn.tres" id="1_vw3u1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cou12"]
+render_priority = 0
+shader = ExtResource("1_vw3u1")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_vw3u1"]
+radius = 0.823
+height = 2.846
+radial_segments = 16
+rings = 4
+
+[sub_resource type="Animation" id="Animation_n3hhw"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:instance_shader_parameters/Add")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.305, -0.305]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:instance_shader_parameters/Add2")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.625, 0.625]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:instance_shader_parameters/sub")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.14, -1.14]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+
+[sub_resource type="Animation" id="Animation_vw3u1"]
+resource_name = "spawn"
+loop_mode = 1
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:instance_shader_parameters/Add")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.5, 0.1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:instance_shader_parameters/Add2")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.595, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:instance_shader_parameters/sub")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.975),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.65, -0.008, 1.36]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.025, 0.975, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4t2nq"]
+_data = {
+"RESET": SubResource("Animation_n3hhw"),
+"spawn": SubResource("Animation_vw3u1")
+}
+
+[node name="SpawnEffect" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+material_override = SubResource("ShaderMaterial_cou12")
+instance_shader_parameters/Add = -0.305
+instance_shader_parameters/Add2 = 0.625
+instance_shader_parameters/Color_Base = Color(0.21875, 1, 0, 1)
+instance_shader_parameters/Color_Ramp = Color(0, 0.671875, 1, 1)
+instance_shader_parameters/FitMax = 2.72
+instance_shader_parameters/FitMin = -0.69
+instance_shader_parameters/FresnelPow = 2.055
+instance_shader_parameters/m = 24.0
+instance_shader_parameters/m2 = 16.0
+instance_shader_parameters/power = 0.385
+instance_shader_parameters/sub = -1.14
+mesh = SubResource("CapsuleMesh_vw3u1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4t2nq")
+}

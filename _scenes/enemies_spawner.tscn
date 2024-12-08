@@ -1,0 +1,1075 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwhukv26a0rkl"]
+
+[ext_resource type="PackedScene" uid="uid://cw3xgyijrvuub" path="res://_scenes/enemy_types/imps/imp_berserker.tscn" id="1_fbhna"]
+
+[node name="EnemiesSpawn" type="Node3D"]
+
+[node name="Enemy" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.6224, 1.218, 8.85468)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+
+[node name="Enemy6" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.6227, 1.218, 6.20718)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy10" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.6109, 1.218, 13.6775)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy9" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.3304, 1.218, 10.2708)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy2" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.6832, 1.218, -3.13407)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy11" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.4655, 1.218, -3.40748)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy13" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.5869, 1.218, -0.150534)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy15" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.8322, 1.218, -7.80637)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+max_contacts_reported = 4
+linear_damp_mode = 1
+linear_damp = 0.32
+angular_damp_mode = 1
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wander_radius = 32.0
+wander_interval = 58.0
+wobble_strength = 12.0
+wobble_damping = 0.93
+
+[node name="Enemy17" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.4769, 1.218, 1.41533)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy18" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7575, 1.218, -1.99138)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy20" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.602, 1.218, -12.9316)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy22" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.92247, 1.218, 6.17088)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy24" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4925, 1.218, -29.067)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy26" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.2477, 1.218, -34.1251)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy27" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.4807, 1.218, -21.5967)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy29" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.553, 1.218, -38.4082)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy30" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.3556, 1.218, -35.9436)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy3" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(-0.428352, 0, -0.903612, 0, 1, 0, 0.903612, 0, -0.428352, -41.7523, 1.218, 19.3915)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy7" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(-0.428352, 0, -0.903612, 0, 1, 0, 0.903612, 0, -0.428352, -37.6467, 1.218, 16.9114)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy12" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(-0.428352, 0, -0.903612, 0, 1, 0, 0.903612, 0, -0.428352, -49.5321, 1.218, 24.5442)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy14" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(-0.428352, 0, -0.903612, 0, 1, 0, 0.903612, 0, -0.428352, -49.7604, 1.218, 32.9789)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy4" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(-0.428352, 0, -0.903612, 0, 1, 0, 0.903612, 0, -0.428352, -36.5137, 1.218, 36.3288)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy16" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(-0.428352, 0, -0.903612, 0, 1, 0, 0.903612, 0, -0.428352, 1.49201, 1.218, -43.2063)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy19" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(-0.428352, 0, -0.903612, 0, 1, 0, 0.903612, 0, -0.428352, 0.742758, 1.218, -49.2292)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy21" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(-0.428352, 0, -0.903612, 0, 1, 0, 0.903612, 0, -0.428352, -0.372942, 1.218, -29.0028)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy23" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(-0.428352, 0, -0.903612, 0, 1, 0, 0.903612, 0, -0.428352, -6.28786, 1.218, -38.0536)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy25" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(-0.428352, 0, -0.903612, 0, 1, 0, 0.903612, 0, -0.428352, -6.51614, 1.218, -29.6189)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy28" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(-0.428352, 0, -0.903612, 0, 1, 0, 0.903612, 0, -0.428352, -6.32652, 1.218, -3.51615)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy31" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(-0.428352, 0, -0.903612, 0, 1, 0, 0.903612, 0, -0.428352, 5.05515, 1.218, -5.50926)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy32" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(-0.428352, 0, -0.903612, 0, 1, 0, 0.903612, 0, -0.428352, -0.576494, 1.218, 21.0602)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy33" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(-0.428352, 0, -0.903612, 0, 1, 0, 0.903612, 0, -0.428352, 0.243761, 1.218, 31.1381)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy34" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(-0.428352, 0, -0.903612, 0, 1, 0, 0.903612, 0, -0.428352, -12.4619, 1.218, 28.6929)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy35" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(-0.428352, 0, -0.903612, 0, 1, 0, 0.903612, 0, -0.428352, 0.556433, 1.218, 40.4776)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy36" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(-0.428352, 0, -0.903612, 0, 1, 0, 0.903612, 0, -0.428352, -8.43968, 1.218, 53.7013)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy5" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(-0.428352, 0, -0.903612, 0, 1, 0, 0.903612, 0, -0.428352, 23.053, 1.218, 21.8534)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy8" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(-0.428352, 0, -0.903612, 0, 1, 0, 0.903612, 0, -0.428352, 27.1586, 1.218, 19.3733)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy37" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(-0.428352, 0, -0.903612, 0, 1, 0, 0.903612, 0, -0.428352, 15.2732, 1.218, 27.0061)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy38" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(-0.428352, 0, -0.903612, 0, 1, 0, 0.903612, 0, -0.428352, 15.0448, 1.218, 35.4408)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy39" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(-0.428352, 0, -0.903612, 0, 1, 0, 0.903612, 0, -0.428352, 28.2916, 1.218, 38.7907)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy40" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(-0.428352, 0, -0.903612, 0, 1, 0, 0.903612, 0, -0.428352, 66.2973, 1.218, -40.7444)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy41" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(-0.428352, 0, -0.903612, 0, 1, 0, 0.903612, 0, -0.428352, 65.548, 1.218, -46.7673)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy42" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(-0.428352, 0, -0.903612, 0, 1, 0, 0.903612, 0, -0.428352, 64.4323, 1.218, -26.5409)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy43" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(-0.428352, 0, -0.903612, 0, 1, 0, 0.903612, 0, -0.428352, 58.5174, 1.218, -35.5916)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy44" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(-0.428352, 0, -0.903612, 0, 1, 0, 0.903612, 0, -0.428352, 58.2891, 1.218, -27.157)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy45" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(-0.428352, 0, -0.903612, 0, 1, 0, 0.903612, 0, -0.428352, 62.5397, 1.218, -10.5833)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy46" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(-0.428352, 0, -0.903612, 0, 1, 0, 0.903612, 0, -0.428352, 64.7934, 1.218, 17.1899)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy47" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(-0.428352, 0, -0.903612, 0, 1, 0, 0.903612, 0, -0.428352, 64.2288, 1.218, 23.5221)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy48" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(-0.428352, 0, -0.903612, 0, 1, 0, 0.903612, 0, -0.428352, 65.049, 1.218, 33.6)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy49" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(-0.428352, 0, -0.903612, 0, 1, 0, 0.903612, 0, -0.428352, 52.3434, 1.218, 31.1549)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy50" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(-0.428352, 0, -0.903612, 0, 1, 0, 0.903612, 0, -0.428352, 65.3617, 1.218, 42.9395)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86
+
+[node name="Enemy51" parent="." instance=ExtResource("1_fbhna")]
+transform = Transform3D(-0.428352, 0, -0.903612, 0, 1, 0, 0.903612, 0, -0.428352, 56.3656, 1.218, 56.1632)
+collision_mask = 17170685
+gravity_scale = 1.0
+can_sleep = true
+freeze_mode = 1
+linear_damp = 0.32
+angular_damp = 0.26
+movement_speed = 28.23
+initial_max_speed = 15.0
+knockback_resistance = 15.105
+turn_speed = 5.715
+detection_range = 74.91
+flock_separation_weight = 30.965
+flock_alignment_weight = 1.685
+flock_cohesion_weight = 1.79
+flock_neighbor_distance = 15.58
+max_flock_neighbors = 0
+wobble_strength = 12.0
+wobble_damping = 0.86

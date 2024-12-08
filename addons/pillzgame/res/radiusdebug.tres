@@ -1,0 +1,100 @@
+[gd_resource type="ShaderMaterial" load_steps=8 format=3 uid="uid://cqk0keq24yqr6"]
+
+[sub_resource type="VisualShaderNodeBooleanParameter" id="VisualShaderNodeBooleanParameter_nrvgw"]
+parameter_name = "use_grid"
+qualifier = 2
+default_value_enabled = true
+default_value = true
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_sso3x"]
+parameter_name = "BaseColor"
+qualifier = 2
+default_value_enabled = true
+default_value = Color(0.332187, 0.696, 0.32016, 1)
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_m30l2"]
+default_input_values = [0, Quaternion(0, 0, 0, 0)]
+op_type = 2
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_fp8oi"]
+default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(1, 1, 1, 1), 2, 0.5]
+op_type = 6
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_78ap3"]
+parameter_name = "ColorModulate"
+qualifier = 2
+hint = 1
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_ta8m3"]
+parameter_name = "AddColor"
+qualifier = 2
+default_value_enabled = true
+default_value = Color(0.056, 1, 0, 1)
+
+[sub_resource type="VisualShader" id="VisualShader_nmh8q"]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_toon, specular_disabled, depth_test_disabled, unshaded, ambient_light_disabled, fog_disabled;
+
+
+// Varyings
+varying vec2 var_screen;
+
+instance uniform vec4 BaseColor : source_color = vec4(0.332187, 0.696000, 0.320160, 1.000000);
+instance uniform vec4 AddColor : source_color = vec4(0.056000, 1.000000, 0.000000, 1.000000);
+instance uniform float ColorModulate : hint_range(0.0, 1.0);
+
+
+
+void vertex() {
+	var_screen = vec2(0.0);
+}
+
+void fragment() {
+// ColorParameter:2
+	vec4 n_out2p0 = BaseColor;
+
+
+// ColorParameter:37
+	vec4 n_out37p0 = AddColor;
+
+
+// FloatParameter:35
+	float n_out35p0 = ColorModulate;
+
+
+// Mix:34
+	vec4 n_out34p0 = mix(n_out2p0, n_out37p0, n_out35p0);
+
+
+// Output:0
+	ALBEDO = vec3(n_out34p0.xyz);
+
+
+}
+"
+graph_offset = Vector2(-591.298, 14.5534)
+modes/diffuse = 3
+modes/specular = 2
+flags/depth_test_disabled = true
+flags/unshaded = true
+flags/ambient_light_disabled = true
+flags/fog_disabled = true
+varyings/screen = "0,3"
+nodes/fragment/0/position = Vector2(3340, -120)
+nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_sso3x")
+nodes/fragment/2/position = Vector2(-360, -760)
+nodes/fragment/13/node = SubResource("VisualShaderNodeBooleanParameter_nrvgw")
+nodes/fragment/13/position = Vector2(-380, 280)
+nodes/fragment/32/node = SubResource("VisualShaderNodeVectorDecompose_m30l2")
+nodes/fragment/32/position = Vector2(940, 0)
+nodes/fragment/34/node = SubResource("VisualShaderNodeMix_fp8oi")
+nodes/fragment/34/position = Vector2(660, -380)
+nodes/fragment/35/node = SubResource("VisualShaderNodeFloatParameter_78ap3")
+nodes/fragment/35/position = Vector2(-340, -20)
+nodes/fragment/37/node = SubResource("VisualShaderNodeColorParameter_ta8m3")
+nodes/fragment/37/position = Vector2(-340, -540)
+nodes/fragment/connections = PackedInt32Array(2, 0, 34, 0, 35, 0, 34, 2, 34, 0, 0, 0, 34, 0, 32, 0, 37, 0, 34, 1)
+
+[resource]
+render_priority = 0
+shader = SubResource("VisualShader_nmh8q")

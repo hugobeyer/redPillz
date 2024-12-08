@@ -1,0 +1,123 @@
+[gd_scene load_steps=10 format=3 uid="uid://b4uuwqe6deuv8"]
+
+[ext_resource type="Script" path="res://_scripts/weapon.gd" id="1_bky2i"]
+[ext_resource type="PackedScene" uid="uid://dbg8lda400aod" path="res://_scenes/bullet.tscn" id="2_cb5nk"]
+[ext_resource type="Texture2D" uid="uid://dexoiebxo3c1k" path="res://_textures/utils/recoil_vectors_vect_noise.png" id="4_1n64c"]
+[ext_resource type="PackedScene" uid="uid://c6uxdp0ihv34w" path="res://_scenes/weapons/machine_gun.tscn" id="5_3n8br"]
+[ext_resource type="Shader" uid="uid://cu4c5hm21w5va" path="res://_shaders/fx/muzzle_flash.tres" id="5_p12ql"]
+
+[sub_resource type="Curve" id="Curve_q4akf"]
+_data = [Vector2(0, 0), 0.0, 9.23413, 0, 0, Vector2(0.0482456, 0.341262), 0.502813, 0.502813, 0, 0, Vector2(1, 1), 1.14827, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_kuhlc"]
+_data = [Vector2(0.00252525, 0), 0.0, 7.6099, 0, 0, Vector2(0.203283, 0.763051), 0.95869, 0.95869, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_acins"]
+render_priority = 0
+shader = ExtResource("5_p12ql")
+shader_parameter/Speed = 8.055
+shader_parameter/In = Color(0.359375, 0.302345, 0.24707, 1)
+shader_parameter/Out = Color(0.894531, 0.874221, 0.569565, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_3n8br"]
+size = Vector2(1.493, 2.462)
+center_offset = Vector3(0, 1.225, 0)
+
+[node name="Weapon" type="Node3D"]
+script = ExtResource("1_bky2i")
+bullet_speed = 80.0
+bullet_damage = 5.0
+bullet_scene = ExtResource("2_cb5nk")
+max_recoil = 21.08
+recoil_curve_time = SubResource("Curve_q4akf")
+recoil_mouse_up_curve = SubResource("Curve_kuhlc")
+recoil_noise_texture = ExtResource("4_1n64c")
+recoil_noise_intensity = 1.233
+recoil_snap_speed = 0.87
+
+[node name="WeaponMuzzle" type="Node3D" parent="."]
+transform = Transform3D(1, 0, -2.13163e-14, 0, 1, 0, 2.13163e-14, 0, 1, 0, 0, 0.118674)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WeaponMuzzle"]
+transform = Transform3D(0.694148, 0, 0.654857, 0, 1.04187, 0, -0.694148, 0, 0.654857, -1.81265e-19, 0, 0.00571955)
+material_override = SubResource("ShaderMaterial_acins")
+cast_shadow = 0
+mesh = SubResource("QuadMesh_3n8br")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="WeaponMuzzle"]
+transform = Transform3D(0.694148, 0, -0.654857, 0, 1.04187, 0, 0.694148, 0, 0.654857, -1.81265e-19, 0, 0.00571955)
+material_override = SubResource("ShaderMaterial_acins")
+cast_shadow = 0
+mesh = SubResource("QuadMesh_3n8br")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="WeaponMuzzle"]
+transform = Transform3D(-1.25681e-08, 1.04187, -2.86247e-08, -0.694148, -3.22028e-08, -0.654857, -0.694148, 1.33388e-08, 0.654857, -1.81265e-19, 0, 0.00571955)
+material_override = SubResource("ShaderMaterial_acins")
+cast_shadow = 0
+mesh = SubResource("QuadMesh_3n8br")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="WeaponMuzzle"]
+transform = Transform3D(-1.25681e-08, 1.04187, 2.86247e-08, -0.694148, -3.22028e-08, 0.654857, 0.694148, -1.33388e-08, 0.654857, -1.81265e-19, 0, 0.00571955)
+material_override = SubResource("ShaderMaterial_acins")
+cast_shadow = 0
+mesh = SubResource("QuadMesh_3n8br")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="WeaponMuzzle"]
+transform = Transform3D(-0.694148, -1.56783e-07, -0.654857, 1.48229e-07, -1.04187, 5.72495e-08, -0.694148, -6.56991e-08, 0.654857, -1.81265e-19, 0, 0.00571955)
+material_override = SubResource("ShaderMaterial_acins")
+cast_shadow = 0
+mesh = SubResource("QuadMesh_3n8br")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="WeaponMuzzle"]
+transform = Transform3D(-0.694148, -1.56783e-07, 0.654857, 1.48229e-07, -1.04187, -5.72495e-08, 0.694148, 6.56991e-08, 0.654857, -1.81265e-19, 0, 0.00571955)
+material_override = SubResource("ShaderMaterial_acins")
+cast_shadow = 0
+mesh = SubResource("QuadMesh_3n8br")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="WeaponMuzzle"]
+transform = Transform3D(1.00112e-07, -1.04187, 8.5874e-08, 0.694148, 1.43444e-07, 0.654857, -0.694148, -6.81882e-09, 0.654857, -1.81265e-19, 0, 0.00571955)
+material_override = SubResource("ShaderMaterial_acins")
+cast_shadow = 0
+mesh = SubResource("QuadMesh_3n8br")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="WeaponMuzzle"]
+transform = Transform3D(1.00112e-07, -1.04187, -8.5874e-08, 0.694148, 1.43444e-07, -0.654857, 0.694148, 6.81882e-09, 0.654857, -1.81265e-19, 0, 0.00571955)
+material_override = SubResource("ShaderMaterial_acins")
+cast_shadow = 0
+mesh = SubResource("QuadMesh_3n8br")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="WeaponMuzzle"]
+transform = Transform3D(-1.07451, 2.53802e-08, 0.706919, 1.07451, 1.38433e-07, 0.706919, -1.20815e-07, 1.00548, -1.15171e-07, -3.41779e-15, 0, 0.0416211)
+material_override = SubResource("ShaderMaterial_acins")
+cast_shadow = 0
+mesh = SubResource("QuadMesh_3n8br")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="WeaponMuzzle"]
+transform = Transform3D(1.07451, 6.25215e-08, 0.822758, 1.07451, 1.38433e-07, -0.822758, -2.14753e-07, 1.00548, 6.21165e-08, -3.41779e-15, 0, 0.0416211)
+material_override = SubResource("ShaderMaterial_acins")
+cast_shadow = 0
+mesh = SubResource("QuadMesh_3n8br")
+skeleton = NodePath("../..")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="WeaponMuzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.374117, 0.294636, 1.11246)
+light_color = Color(1, 0.566864, 0.332031, 1)
+light_energy = 32.0
+light_specular = 1.0
+light_bake_mode = 0
+omni_range = 12.0
+
+[node name="machine_gun" parent="." instance=ExtResource("5_3n8br")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)

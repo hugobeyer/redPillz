@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://vlhe276mkt0b"]
+
+[ext_resource type="Script" path="res://_scripts/wave_system.gd" id="1_bvyyk"]
+[ext_resource type="PackedScene" uid="uid://deykio3jwy2vg" path="res://_scenes/enemy.tscn" id="2_gefi2"]
+
+[node name="WaveSystem" type="Node3D"]
+script = ExtResource("1_bvyyk")
+enemy_scene = ExtResource("2_gefi2")

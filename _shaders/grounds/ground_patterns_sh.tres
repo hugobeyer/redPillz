@@ -1,0 +1,582 @@
+[gd_resource type="VisualShader" load_steps=40 format=3 uid="uid://yce5hjpk54je"]
+
+[sub_resource type="VisualShaderNodeExpression" id="VisualShaderNodeExpression_0um37"]
+size = Vector2(480, 280)
+expression = "vec2 scaled_uv = uv * grid_scale;
+vec2 cell = floor(scaled_uv);
+
+// Improved hash function
+vec2 seed = cell + vec2(0.1, 0.1);
+vec3 p = vec3(seed.xy, 1.0);
+p = fract(p * vec3(443.8975, 397.2973, 491.1871));
+p += dot(p.zxy, p.yxz + 19.19);
+float hash = fract(p.x * p.y * p.z);
+
+// Checker pattern
+float checker = step(0.5, fract(cell.x + cell.y));
+
+// Mix checker with continuous random value
+result = mix(checker, hash, randomness);"
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_4r7ye"]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_ed0d0"]
+parameter_name = "randomness"
+qualifier = 2
+default_value_enabled = true
+default_value = 0.25
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_560y7"]
+operator = 6
+
+[sub_resource type="VisualShaderNodeExpression" id="VisualShaderNodeExpression_sjs88"]
+size = Vector2(472, 360)
+expression = "vec2 scaled_uv = uv * grid_scale;
+vec2 grid = abs(fract(scaled_uv) - 0.5);
+float pyramid = max(grid.x, grid.y);
+result = 1.0 - min(1.0, (pyramid - border_size) / (0.5 - border_size));"
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_hxs0i"]
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_i22wh"]
+constant = 0.5
+
+[sub_resource type="VisualShaderNodeClamp" id="VisualShaderNodeClamp_e5mmc"]
+
+[sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_ptdt6"]
+function = 31
+
+[sub_resource type="VisualShaderNodeExpression" id="VisualShaderNodeExpression_82kfc"]
+size = Vector2(472, 360)
+expression = "vec2 scaled_uv = uv * grid_scale;
+vec2 grid = fract(scaled_uv) - 0.5;
+float dist = length(max(abs(grid) - border_size, vec2(0.0)));
+result = smoothstep(0.0, border_gradient, dist);"
+
+[sub_resource type="VisualShaderNodeExpression" id="VisualShaderNodeExpression_xqg6d"]
+size = Vector2(740, 380)
+expression = "vec2 scaled_uv = uv * grid_scale;
+vec2 cell = floor(scaled_uv);
+vec2 cell_uv = fract(scaled_uv) - 0.5;
+
+// Improved hash function for random values
+vec3 p = vec3(cell + vec2(0.1, 0.1), 1.0);
+p = fract(p * vec3(443.8975, 397.2973, 491.1871));
+p += dot(p.zxy, p.yxz + 19.19);
+vec3 random = fract(p * vec3(0.1031, 0.1030, 0.0973));
+
+// Random rotation
+float angle = random.x * 6.283185 * randomness; // 0 to 2π
+float c = cos(angle);
+float s = sin(angle);
+vec2 rotated_uv = vec2(
+    cell_uv.x * c - cell_uv.y * s,
+    cell_uv.x * s + cell_uv.y * c
+);
+
+// Random scale between 0.75 and 2
+float scale = mix(0.75, 2.0, random.y * randomness);
+rotated_uv *= scale;
+
+// Gradient
+result = clamp((rotated_uv.x + 0.5), 0.0, 1.0);"
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_vnbpl"]
+
+[sub_resource type="VisualShaderNodeRandomRange" id="VisualShaderNodeRandomRange_b2cnq"]
+default_input_values = [0, Vector3(1, 1, 1), 1, 0.3, 2, 0.7]
+
+[sub_resource type="VisualShaderNodeRandomRange" id="VisualShaderNodeRandomRange_kcgbq"]
+default_input_values = [0, Vector3(1, 1, 1), 1, 0.2, 2, 0.8]
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_o5gsx"]
+parameter_name = "grid_scale"
+qualifier = 2
+default_value_enabled = true
+default_value = 200.0
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_spqh0"]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_g0ooo"]
+parameter_name = "border_size"
+qualifier = 2
+default_value_enabled = true
+default_value = 0.45
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_0fn56"]
+parameter_name = "border_gradient"
+qualifier = 2
+default_value_enabled = true
+default_value = 0.065
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_gieqd"]
+default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, 0.5]
+op_type = 4
+
+[sub_resource type="VisualShaderNodeParameterRef" id="VisualShaderNodeParameterRef_n1i4y"]
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_2pcn8"]
+parameter_name = "grid_color_fill"
+qualifier = 2
+default_value_enabled = true
+default_value = Color(0.383705, 0.57, 0.3591, 1)
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_in00d"]
+parameter_name = "grid_color_border"
+qualifier = 2
+default_value_enabled = true
+default_value = Color(0.0966, 0.21, 0.11928, 1)
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_tlcgd"]
+input_name = "inv_view_matrix"
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_i5dxs"]
+input_name = "vertex"
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_5aqd5"]
+
+[sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_8glyw"]
+default_input_values = [0, 0.0, 1, 0.0, 2, 0.0, 3, 0.0]
+op_type = 2
+
+[sub_resource type="VisualShaderNodeTransformVecMult" id="VisualShaderNodeTransformVecMult_m0jsx"]
+operator = 1
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_wlgvm"]
+default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(32, 32, 2, 32)]
+op_type = 2
+operator = 1
+
+[sub_resource type="VisualShaderNodeVectorLen" id="VisualShaderNodeVectorLen_7t7gj"]
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_ccchb"]
+parameter_name = "inputmin"
+qualifier = 2
+default_value_enabled = true
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_pmyu6"]
+parameter_name = "inputmax"
+qualifier = 2
+default_value_enabled = true
+default_value = 1.0
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_vweuc"]
+parameter_name = "outmin"
+qualifier = 2
+default_value_enabled = true
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_bykxe"]
+parameter_name = "outmax"
+qualifier = 2
+default_value_enabled = true
+default_value = 1.0
+
+[sub_resource type="VisualShaderNodeRemap" id="VisualShaderNodeRemap_hh5jk"]
+default_input_values = [1, 4.0, 2, 32.0, 3, 0.0, 4, 1.0]
+
+[sub_resource type="VisualShaderNodeVaryingSetter" id="VisualShaderNodeVaryingSetter_vdmi2"]
+varying_name = "player_len"
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_iudpt"]
+constant = 1.0
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_yt5qk"]
+default_input_values = [0, Quaternion(0, 0, 0, 0)]
+op_type = 2
+
+[sub_resource type="VisualShaderNodeVec3Parameter" id="VisualShaderNodeVec3Parameter_gm5ho"]
+parameter_name = "player_position"
+qualifier = 2
+
+[sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_necx5"]
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_toon, specular_disabled;
+
+
+// Varyings
+varying vec4 var_player_pos;
+varying float var_player_len;
+
+instance uniform vec3 player_position;
+instance uniform vec4 grid_color_fill : source_color = vec4(0.383705, 0.570000, 0.359100, 1.000000);
+instance uniform vec4 grid_color_border : source_color = vec4(0.096600, 0.210000, 0.119280, 1.000000);
+instance uniform float grid_scale = 200;
+instance uniform float border_size = 0.44999998807907;
+instance uniform float border_gradient = 0.06499999761581;
+instance uniform float randomness = 0.25;
+
+
+
+
+// 3D Noise with friendly permission by Inigo Quilez
+vec3 hash_noise_range( vec3 p ) {
+	p *= mat3(vec3(127.1, 311.7, -53.7), vec3(269.5, 183.3, 77.1), vec3(-301.7, 27.3, 215.3));
+	return 2.0 * fract(fract(p)*4375.55) -1.;
+}
+
+
+void vertex() {
+// Input:11
+	mat4 n_out11p0 = INV_VIEW_MATRIX;
+
+
+// Input:12
+	vec3 n_out12p0 = VERTEX;
+
+
+// VectorDecompose:13
+	float n_out13p0 = n_out12p0.x;
+	float n_out13p1 = n_out12p0.y;
+	float n_out13p2 = n_out12p0.z;
+
+
+// FloatConstant:28
+	float n_out28p0 = 1.000000;
+
+
+// VectorCompose:14
+	vec4 n_out14p0 = vec4(n_out13p0, n_out13p1, n_out13p2, n_out28p0);
+
+
+// TransformVectorMult:16
+	vec3 n_out16p0 = (vec4(vec3(n_out14p0.xyz), 1.0) * n_out11p0).xyz;
+
+
+// Vector3Parameter:3
+	vec3 n_out3p0 = player_position;
+
+
+// VectorOp:17
+	vec4 n_out17p0 = vec4(n_out16p0, 0.0) - vec4(n_out3p0, 0.0);
+
+
+// VectorDecompose:29
+	float n_out29p0 = n_out17p0.x;
+	float n_out29p1 = n_out17p0.y;
+	float n_out29p2 = n_out17p0.z;
+	float n_out29p3 = n_out17p0.w;
+
+
+// VectorCompose:30
+	vec3 n_out30p0 = vec3(n_out29p0, n_out29p1, n_out29p2);
+
+
+// VectorLen:18
+	float n_out18p0 = length(n_out30p0);
+
+
+// VaryingSetter:26
+	var_player_len = n_out18p0;
+
+
+	var_player_pos = vec4(0.0);
+}
+
+void fragment() {
+// ColorParameter:8
+	vec4 n_out8p0 = grid_color_fill;
+
+
+// ColorParameter:9
+	vec4 n_out9p0 = grid_color_border;
+
+
+// Input:4
+	vec2 n_out4p0 = UV;
+
+
+// FloatParameter:3
+	float n_out3p0 = grid_scale;
+
+
+// FloatParameter:5
+	float n_out5p0 = border_size;
+
+
+// FloatParameter:6
+	float n_out6p0 = border_gradient;
+
+
+	float n_out2p0;
+// Expression:2
+	n_out2p0 = 0.0;
+	{
+		vec2 scaled_uv = n_out4p0 * n_out3p0;
+		vec2 grid = fract(scaled_uv) - 0.5;
+		float dist = length(max(abs(grid) - n_out5p0, vec2(0.0)));
+		n_out2p0 = smoothstep(0.0, n_out6p0, dist);
+	}
+
+
+	float n_out14p0;
+// Expression:14
+	n_out14p0 = 0.0;
+	{
+		vec2 scaled_uv = n_out4p0 * n_out3p0;
+		vec2 grid = abs(fract(scaled_uv) - 0.5);
+		float pyramid = max(grid.x, grid.y);
+		n_out14p0 = 1.0 - min(1.0, (pyramid - n_out5p0) / (0.5 - n_out5p0));
+	}
+
+
+// FloatFunc:19
+	float n_out19p0 = 1.0 - n_out14p0;
+
+
+// FloatConstant:17
+	float n_out17p0 = 0.500000;
+
+
+// Mix:16
+	float n_out16p0 = mix(n_out2p0, n_out19p0, n_out17p0);
+
+
+// Input:11
+	vec2 n_out11p0 = UV;
+
+
+// FloatParameter:12
+	float n_out12p0 = randomness;
+
+
+	float n_out10p0;
+// Expression:10
+	n_out10p0 = 0.0;
+	{
+		vec2 scaled_uv = n_out11p0 * n_out3p0;
+		vec2 cell = floor(scaled_uv);
+		
+		// Improved hash function
+		vec2 seed = cell + vec2(0.1, 0.1);
+		vec3 p = vec3(seed.xy, 1.0);
+		p = fract(p * vec3(443.8975, 397.2973, 491.1871));
+		p += dot(p.zxy, p.yxz + 19.19);
+		float hash = fract(p.x * p.y * p.z);
+		
+		// Checker pattern
+		float checker = step(0.5, fract(cell.x + cell.y));
+		
+		// Mix checker with continuous random value
+		n_out10p0 = mix(checker, hash, n_out12p0);
+	}
+
+
+// RandomRange:24
+	float n_in24p1 = 0.20000;
+	float n_in24p2 = 0.80000;
+	float n_out24p0 = mix(n_in24p1, n_in24p2, hash_noise_range(vec3(n_out10p0)).x);
+
+
+	float n_out20p0;
+// Expression:20
+	n_out20p0 = 0.0;
+	{
+		vec2 scaled_uv = n_out11p0 * n_out3p0;
+		vec2 cell = floor(scaled_uv);
+		vec2 cell_uv = fract(scaled_uv) - 0.5;
+		
+		// Improved hash function for random values
+		vec3 p = vec3(cell + vec2(0.1, 0.1), 1.0);
+		p = fract(p * vec3(443.8975, 397.2973, 491.1871));
+		p += dot(p.zxy, p.yxz + 19.19);
+		vec3 random = fract(p * vec3(0.1031, 0.1030, 0.0973));
+		
+		// Random rotation
+		float angle = random.x * 6.283185 * n_out12p0; // 0 to 2π
+		float c = cos(angle);
+		float s = sin(angle);
+		vec2 rotated_uv = vec2(
+		    cell_uv.x * c - cell_uv.y * s,
+		    cell_uv.x * s + cell_uv.y * c
+		);
+		
+		// Random scale between 0.75 and 2
+		float scale = mix(0.75, 2.0, random.y * n_out12p0);
+		rotated_uv *= scale;
+		
+		// Gradient
+		n_out20p0 = clamp((rotated_uv.x + 0.5), 0.0, 1.0);
+	}
+
+
+// RandomRange:23
+	float n_in23p1 = 0.30000;
+	float n_in23p2 = 0.70000;
+	float n_out23p0 = mix(n_in23p1, n_in23p2, hash_noise_range(vec3(n_out12p0)).x);
+
+
+// Mix:21
+	float n_out21p0 = mix(n_out24p0, n_out20p0, n_out23p0);
+
+
+// FloatOp:13
+	float n_out13p0 = max(n_out16p0, n_out21p0);
+
+
+// Clamp:18
+	float n_in18p1 = 0.00000;
+	float n_in18p2 = 1.00000;
+	float n_out18p0 = clamp(n_out13p0, n_in18p1, n_in18p2);
+
+
+// Mix:7
+	vec3 n_out7p0 = mix(vec3(n_out8p0.xyz), vec3(n_out9p0.xyz), n_out18p0);
+
+
+// Output:0
+	ALBEDO = n_out7p0;
+
+
+}
+"
+graph_offset = Vector2(-1191.04, -220.708)
+modes/diffuse = 3
+modes/specular = 2
+varyings/player_pos = "0,5"
+varyings/player_len = "0,0"
+nodes/vertex/0/position = Vector2(2460, -160)
+nodes/vertex/3/node = SubResource("VisualShaderNodeVec3Parameter_gm5ho")
+nodes/vertex/3/position = Vector2(-740, 100)
+nodes/vertex/11/node = SubResource("VisualShaderNodeInput_tlcgd")
+nodes/vertex/11/position = Vector2(-680, -220)
+nodes/vertex/12/node = SubResource("VisualShaderNodeInput_i5dxs")
+nodes/vertex/12/position = Vector2(-740, -40)
+nodes/vertex/13/node = SubResource("VisualShaderNodeVectorDecompose_5aqd5")
+nodes/vertex/13/position = Vector2(-400, -100)
+nodes/vertex/14/node = SubResource("VisualShaderNodeVectorCompose_8glyw")
+nodes/vertex/14/position = Vector2(-120, -160)
+nodes/vertex/16/node = SubResource("VisualShaderNodeTransformVecMult_m0jsx")
+nodes/vertex/16/position = Vector2(80, -380)
+nodes/vertex/17/node = SubResource("VisualShaderNodeVectorOp_wlgvm")
+nodes/vertex/17/position = Vector2(380, -360)
+nodes/vertex/18/node = SubResource("VisualShaderNodeVectorLen_7t7gj")
+nodes/vertex/18/position = Vector2(1160, -340)
+nodes/vertex/21/node = SubResource("VisualShaderNodeFloatParameter_ccchb")
+nodes/vertex/21/position = Vector2(420, -1380)
+nodes/vertex/22/node = SubResource("VisualShaderNodeFloatParameter_pmyu6")
+nodes/vertex/22/position = Vector2(420, -1140)
+nodes/vertex/23/node = SubResource("VisualShaderNodeFloatParameter_vweuc")
+nodes/vertex/23/position = Vector2(420, -900)
+nodes/vertex/24/node = SubResource("VisualShaderNodeFloatParameter_bykxe")
+nodes/vertex/24/position = Vector2(440, -640)
+nodes/vertex/25/node = SubResource("VisualShaderNodeRemap_hh5jk")
+nodes/vertex/25/position = Vector2(1480, -580)
+nodes/vertex/26/node = SubResource("VisualShaderNodeVaryingSetter_vdmi2")
+nodes/vertex/26/position = Vector2(1500, 0)
+nodes/vertex/28/node = SubResource("VisualShaderNodeFloatConstant_iudpt")
+nodes/vertex/28/position = Vector2(-420, 120)
+nodes/vertex/29/node = SubResource("VisualShaderNodeVectorDecompose_yt5qk")
+nodes/vertex/29/position = Vector2(620, -400)
+nodes/vertex/30/node = SubResource("VisualShaderNodeVectorCompose_necx5")
+nodes/vertex/30/position = Vector2(860, -400)
+nodes/vertex/connections = PackedInt32Array(13, 0, 14, 0, 13, 1, 14, 1, 13, 2, 14, 2, 12, 0, 13, 0, 11, 0, 16, 0, 3, 0, 17, 1, 21, 0, 25, 1, 22, 0, 25, 2, 23, 0, 25, 3, 24, 0, 25, 4, 14, 0, 16, 1, 16, 0, 17, 0, 18, 0, 25, 0, 28, 0, 14, 3, 17, 0, 29, 0, 29, 0, 30, 0, 29, 1, 30, 1, 29, 2, 30, 2, 30, 0, 18, 0, 18, 0, 26, 0)
+nodes/fragment/0/position = Vector2(4060, -420)
+nodes/fragment/2/node = SubResource("VisualShaderNodeExpression_82kfc")
+nodes/fragment/2/position = Vector2(-1640, -300)
+nodes/fragment/2/size = Vector2(472, 360)
+nodes/fragment/2/input_ports = "0,3,uv;1,0,grid_scale;2,0,border_size;3,0,border_gradient;"
+nodes/fragment/2/output_ports = "0,0,result;"
+nodes/fragment/2/expression = "vec2 scaled_uv = uv * grid_scale;
+vec2 grid = fract(scaled_uv) - 0.5;
+float dist = length(max(abs(grid) - border_size, vec2(0.0)));
+result = smoothstep(0.0, border_gradient, dist);"
+nodes/fragment/3/node = SubResource("VisualShaderNodeFloatParameter_o5gsx")
+nodes/fragment/3/position = Vector2(-2260, -640)
+nodes/fragment/4/node = SubResource("VisualShaderNodeInput_spqh0")
+nodes/fragment/4/position = Vector2(-2240, 220)
+nodes/fragment/5/node = SubResource("VisualShaderNodeFloatParameter_g0ooo")
+nodes/fragment/5/position = Vector2(-2260, -340)
+nodes/fragment/6/node = SubResource("VisualShaderNodeFloatParameter_0fn56")
+nodes/fragment/6/position = Vector2(-2260, -80)
+nodes/fragment/7/node = SubResource("VisualShaderNodeMix_gieqd")
+nodes/fragment/7/position = Vector2(3500, -360)
+nodes/fragment/8/node = SubResource("VisualShaderNodeColorParameter_2pcn8")
+nodes/fragment/8/position = Vector2(-660, -820)
+nodes/fragment/9/node = SubResource("VisualShaderNodeColorParameter_in00d")
+nodes/fragment/9/position = Vector2(-660, -580)
+nodes/fragment/10/node = SubResource("VisualShaderNodeExpression_0um37")
+nodes/fragment/10/position = Vector2(-60, 120)
+nodes/fragment/10/size = Vector2(480, 280)
+nodes/fragment/10/input_ports = "0,0,grid_scale;1,3,uv;2,0,randomness;"
+nodes/fragment/10/output_ports = "0,0,result;"
+nodes/fragment/10/expression = "vec2 scaled_uv = uv * grid_scale;
+vec2 cell = floor(scaled_uv);
+
+// Improved hash function
+vec2 seed = cell + vec2(0.1, 0.1);
+vec3 p = vec3(seed.xy, 1.0);
+p = fract(p * vec3(443.8975, 397.2973, 491.1871));
+p += dot(p.zxy, p.yxz + 19.19);
+float hash = fract(p.x * p.y * p.z);
+
+// Checker pattern
+float checker = step(0.5, fract(cell.x + cell.y));
+
+// Mix checker with continuous random value
+result = mix(checker, hash, randomness);"
+nodes/fragment/11/node = SubResource("VisualShaderNodeInput_4r7ye")
+nodes/fragment/11/position = Vector2(-760, 240)
+nodes/fragment/12/node = SubResource("VisualShaderNodeFloatParameter_ed0d0")
+nodes/fragment/12/position = Vector2(-1180, 580)
+nodes/fragment/13/node = SubResource("VisualShaderNodeFloatOp_560y7")
+nodes/fragment/13/position = Vector2(1700, -160)
+nodes/fragment/14/node = SubResource("VisualShaderNodeExpression_sjs88")
+nodes/fragment/14/position = Vector2(-1320, 180)
+nodes/fragment/14/size = Vector2(472, 360)
+nodes/fragment/14/input_ports = "0,3,uv;1,0,grid_scale;2,0,border_size;"
+nodes/fragment/14/output_ports = "0,0,result;"
+nodes/fragment/14/expression = "vec2 scaled_uv = uv * grid_scale;
+vec2 grid = abs(fract(scaled_uv) - 0.5);
+float pyramid = max(grid.x, grid.y);
+result = 1.0 - min(1.0, (pyramid - border_size) / (0.5 - border_size));"
+nodes/fragment/16/node = SubResource("VisualShaderNodeMix_hxs0i")
+nodes/fragment/16/position = Vector2(180, -320)
+nodes/fragment/17/node = SubResource("VisualShaderNodeFloatConstant_i22wh")
+nodes/fragment/17/position = Vector2(0, -40)
+nodes/fragment/18/node = SubResource("VisualShaderNodeClamp_e5mmc")
+nodes/fragment/18/position = Vector2(3000, -40)
+nodes/fragment/19/node = SubResource("VisualShaderNodeFloatFunc_ptdt6")
+nodes/fragment/19/position = Vector2(-480, 60)
+nodes/fragment/20/node = SubResource("VisualShaderNodeExpression_xqg6d")
+nodes/fragment/20/position = Vector2(40, 540)
+nodes/fragment/20/size = Vector2(740, 380)
+nodes/fragment/20/input_ports = "0,0,grid_scale;1,3,uv;2,0,randomness;"
+nodes/fragment/20/output_ports = "0,0,result;"
+nodes/fragment/20/expression = "vec2 scaled_uv = uv * grid_scale;
+vec2 cell = floor(scaled_uv);
+vec2 cell_uv = fract(scaled_uv) - 0.5;
+
+// Improved hash function for random values
+vec3 p = vec3(cell + vec2(0.1, 0.1), 1.0);
+p = fract(p * vec3(443.8975, 397.2973, 491.1871));
+p += dot(p.zxy, p.yxz + 19.19);
+vec3 random = fract(p * vec3(0.1031, 0.1030, 0.0973));
+
+// Random rotation
+float angle = random.x * 6.283185 * randomness; // 0 to 2π
+float c = cos(angle);
+float s = sin(angle);
+vec2 rotated_uv = vec2(
+    cell_uv.x * c - cell_uv.y * s,
+    cell_uv.x * s + cell_uv.y * c
+);
+
+// Random scale between 0.75 and 2
+float scale = mix(0.75, 2.0, random.y * randomness);
+rotated_uv *= scale;
+
+// Gradient
+result = clamp((rotated_uv.x + 0.5), 0.0, 1.0);"
+nodes/fragment/21/node = SubResource("VisualShaderNodeMix_vnbpl")
+nodes/fragment/21/position = Vector2(1180, 600)
+nodes/fragment/23/node = SubResource("VisualShaderNodeRandomRange_b2cnq")
+nodes/fragment/23/position = Vector2(300, 1220)
+nodes/fragment/24/node = SubResource("VisualShaderNodeRandomRange_kcgbq")
+nodes/fragment/24/position = Vector2(660, 0)
+nodes/fragment/72/node = SubResource("VisualShaderNodeParameterRef_n1i4y")
+nodes/fragment/72/position = Vector2(1003.07, -1420.07)
+nodes/fragment/connections = PackedInt32Array(4, 0, 2, 0, 3, 0, 2, 1, 5, 0, 2, 2, 6, 0, 2, 3, 8, 0, 7, 0, 9, 0, 7, 1, 3, 0, 10, 0, 3, 0, 14, 1, 4, 0, 14, 0, 5, 0, 14, 2, 2, 0, 16, 0, 16, 0, 13, 0, 17, 0, 16, 2, 18, 0, 7, 2, 14, 0, 19, 0, 19, 0, 16, 1, 3, 0, 20, 0, 20, 0, 21, 1, 21, 0, 13, 1, 23, 0, 21, 2, 10, 0, 24, 0, 24, 0, 21, 0, 7, 0, 0, 0, 12, 0, 10, 2, 12, 0, 23, 0, 11, 0, 10, 1, 12, 0, 20, 2, 11, 0, 20, 1, 13, 0, 18, 0)

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqqehfd6e7dkb"]
+
+[ext_resource type="Script" path="res://_scripts/tools/curve_settings.gd" id="1_i7jsa"]
+
+[node name="DebugCurve" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0819929, 0)
+script = ExtResource("1_i7jsa")

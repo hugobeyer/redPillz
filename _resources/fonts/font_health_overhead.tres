@@ -1,0 +1,10 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://cwxu07t5jip7t"]
+
+[sub_resource type="SystemFont" id="SystemFont_4qjkv"]
+font_names = PackedStringArray("Squada One")
+allow_system_fallback = false
+subpixel_positioning = 3
+
+[resource]
+base_font = SubResource("SystemFont_4qjkv")
+spacing_glyph = -11

@@ -1,0 +1,105 @@
+[gd_scene load_steps=12 format=3 uid="uid://d1d575aqxdr14"]
+
+[ext_resource type="Script" path="res://_scripts/enemy.gd" id="1_mpxs5"]
+[ext_resource type="Resource" uid="uid://doy5u21vcsick" path="res://_resources/enemies/IMP_Default.tres" id="2_6d7qa"]
+[ext_resource type="Script" path="res://_scripts/include/enemy_effects.gd" id="3_rmv3q"]
+[ext_resource type="PackedScene" uid="uid://bud2p2xgbdxj4" path="res://_scenes/enemy_features/shield.tscn" id="4_nge7d"]
+[ext_resource type="Material" uid="uid://chsniolv24rhs" path="res://_materials/imp_mats/shielded_imp_mat.tres" id="5_urvln"]
+[ext_resource type="Script" path="res://_resources/ui/health_bar_3d.gd" id="6_35d1j"]
+[ext_resource type="PackedScene" uid="uid://dwpsppfskic5x" path="res://_scenes/enemy_features/melee.tscn" id="7_gffri"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ejukm"]
+margin = 0.1
+radius = 0.563
+height = 1.72567
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_xwmmt"]
+resource_local_to_scene = true
+radius = 0.521
+height = 1.622
+radial_segments = 9
+rings = 3
+
+[sub_resource type="Gradient" id="Gradient_ld7nr"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jvmx3"]
+gradient = SubResource("Gradient_ld7nr")
+width = 128
+height = 60
+
+[node name="Enemy" type="CharacterBody3D" groups=["enemies"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.896982, 0)
+collision_layer = 2
+collision_mask = 393471
+input_ray_pickable = false
+axis_lock_linear_y = true
+wall_min_slide_angle = 1.24093
+floor_stop_on_slope = false
+floor_block_on_wall = false
+script = ExtResource("1_mpxs5")
+enemy_type = ExtResource("2_6d7qa")
+flock_alignment_weight = inf
+flock_cohesion_weight = inf
+death_effect_scene = null
+enemy_type = ExtResource("2_6d7qa")
+metadata/_edit_pinned_properties_ = [&"death_effect_scene"]
+
+[node name="EnemyEffects" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+script = ExtResource("3_rmv3q")
+
+[node name="EnemyShield" parent="." instance=ExtResource("4_nge7d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.548865)
+effect_duration = 0.2
+max_shield_strength = 50.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00305998, 0)
+shape = SubResource("CapsuleShape3D_ejukm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+layers = 31
+material_override = ExtResource("5_urvln")
+instance_shader_parameters/alpha = 0.0
+instance_shader_parameters/lerp_color = Color(1.5, 0.1, 0.1, 1)
+instance_shader_parameters/lerp_wave = 0.0
+instance_shader_parameters/lerp_wave_contrast = 4.0
+instance_shader_parameters/lerp_wave_freq = 0.65
+instance_shader_parameters/lerp_wave_offset = 5.85
+instance_shader_parameters/wave_range_lerp = -0.215
+mesh = SubResource("CapsuleMesh_xwmmt")
+
+[node name="HealthBar" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.549, 0)
+cast_shadow = 0
+gi_mode = 0
+modulate = Color(0.14902, 1, 0, 1)
+billboard = 1
+transparent = false
+double_sided = false
+texture_filter = 0
+texture = SubResource("GradientTexture2D_jvmx3")
+region_rect = Rect2(0, 0, 120, 50)
+script = ExtResource("6_35d1j")
+color0 = Color(0.875, 1, 0, 1)
+bar_width_px = 120
+bar_height_px = 32
+
+[node name="Back" type="Sprite3D" parent="HealthBar"]
+cast_shadow = 0
+gi_mode = 0
+modulate = Color(0.14902, 1, 0, 1)
+billboard = 1
+transparent = false
+double_sided = false
+texture_filter = 0
+render_priority = -1
+texture = SubResource("GradientTexture2D_jvmx3")
+region_rect = Rect2(0, 0, 120, 50)
+
+[node name="MeleeWeapon" parent="." instance=ExtResource("7_gffri")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+animation_player_path = NodePath("")
+melee_node_path = NodePath(".")

@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://ceqgsnraqv0i7"]
+
+[node name="swing" type="AnimationPlayer"]
+root_node = NodePath("../Root")
+playback_auto_capture_transition_type = 5

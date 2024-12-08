@@ -1,0 +1,18 @@
+[gd_resource type="Environment" format=3 uid="uid://dyl3d3xg0oxhq"]
+
+[resource]
+background_mode = 1
+background_color = Color(0.25968, 0.139155, 0.232621, 1)
+background_energy_multiplier = 0.9
+ambient_light_source = 2
+ambient_light_color = Color(0.08454, 0.220657, 0.211585, 1)
+ambient_light_energy = 2.41
+fog_mode = 1
+fog_light_energy = 0.55
+fog_density = 0.0695
+fog_sky_affect = 0.185
+fog_height = 1.0
+fog_height_density = -1.5555
+fog_depth_curve = 1252.29
+fog_depth_begin = -88.1
+fog_depth_end = 38.9

@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://d58p32hgp45d"]
+
+[ext_resource type="Shader" uid="uid://c1wmyt1mpie5d" path="res://_shaders/grounds/custom_gr_tex.tres" id="1_eldew"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_eldew")
+shader_parameter/ColorBot = Color(0.150253, 0.138443, 0.167969, 1)
+shader_parameter/ColorTop = Color(0.2408, 0.24864, 0.28, 1)
+shader_parameter/tiling = 10.0
+shader_parameter/ColorTop2 = Color(0.26, 0.26, 0.26, 1)
+shader_parameter/tiling2 = 4.0

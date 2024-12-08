@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bi2aqtvds4hu6"]
+
+[ext_resource type="Shader" uid="uid://becggyb27xu1i" path="res://_shaders/buddy.tres" id="1_bxgmr"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_bxgmr")
+shader_parameter/ColorParameter = Color(0.835938, 0.415724, 0.0783691, 1)
+shader_parameter/ColorParameter2 = Color(0.500977, 0.627434, 0.75, 1)

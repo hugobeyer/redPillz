@@ -1,0 +1,7 @@
+[gd_resource type="CapsuleMesh" format=3 uid="uid://bvl0n3ggpeowq"]
+
+[resource]
+radius = 0.409
+height = 1.642
+radial_segments = 9
+rings = 3

@@ -1,0 +1,106 @@
+[gd_scene load_steps=12 format=3 uid="uid://mg0s823cdat4"]
+
+[ext_resource type="Script" path="res://addons/pillzgame/scripts/wasd_movement.gd" id="1_guapk"]
+[ext_resource type="Shader" path="res://_shaders/custom/custom_frag_actors.gdshader" id="2_f8vty"]
+[ext_resource type="PackedScene" uid="uid://bqey4meim1lok" path="res://_assets/pivot.tscn" id="3_f8vty"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_33rod"]
+render_priority = 0
+shader = ExtResource("2_f8vty")
+shader_parameter/color_top = Color(0.628906, 0.253036, 0.253036, 1)
+shader_parameter/color_bottom = Color(0.67334, 0.722187, 0.769531, 1)
+shader_parameter/specular_color = Color(1, 1, 1, 1)
+shader_parameter/fresnel_color = Color(0, 0, 0, 1)
+shader_parameter/vertex_color_mix = 0.0
+shader_parameter/blend_mode = 0
+shader_parameter/gradient_rotation_mode = 1
+shader_parameter/gradient_offset = 0.153
+shader_parameter/gradient_smoothness = 0.0
+shader_parameter/diffuse_contrast = 0.93
+shader_parameter/diffuse_wrap = 2.0
+shader_parameter/diffuse_offset = -0.075
+shader_parameter/specular_intensity = 2.0
+shader_parameter/specular_size = 0.077
+shader_parameter/specular_smoothness = 0.384
+shader_parameter/specular_offset = -0.069
+shader_parameter/fresnel_power = 1.0
+shader_parameter/fresnel_intensity = 1.0
+shader_parameter/fresnel_contrast = 1.0
+shader_parameter/fresnel_offset = 4.75e-08
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fjhpb"]
+
+[sub_resource type="Gradient" id="Gradient_f8vty"]
+interpolation_color_space = 2
+offsets = PackedFloat32Array(0.469697, 0.543939, 0.624242, 0.638636, 0.662121, 0.700758, 0.709091, 0.75303)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.0509804, 1, 1, 1, 0.973393, 0, 1, 0.320313, 1, 0.33, 1, 0.4305, 1, 0, 1, 0.283333, 1, 0, 0, 0, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_f8vty"]
+gradient = SubResource("Gradient_f8vty")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_33rod"]
+offsets = PackedFloat32Array(0.181061, 0.258333)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_33rod"]
+gradient = SubResource("Gradient_33rod")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.815)
+fill_to = Vector2(1.95, 2.635)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ol5bk"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+blend_mode = 1
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 2
+disable_ambient_light = true
+disable_fog = true
+albedo_texture = SubResource("GradientTexture2D_f8vty")
+detail_enabled = true
+detail_mask = SubResource("GradientTexture2D_33rod")
+detail_blend_mode = 2
+point_size = 31.5
+
+[sub_resource type="QuadMesh" id="QuadMesh_ov2eb"]
+
+[node name="targetNode" type="Node3D"]
+transform = Transform3D(0.999985, 0, 0, 0, 1, 0, 0, 0, 0.999985, 0, 0, 0)
+script = ExtResource("1_guapk")
+wander_speed = 12.0
+flee_speed = 17.795
+turn_speed = 4.0
+max_turn_angle = 7.375
+flee_distance = 20.0
+max_flee_points = 6
+min_radius = 32.0
+max_radius = 256.0
+turn_around_zone = 32.0
+world_noise_strength = 1.5
+noise_speed = 0.2
+noise_octaves = 3
+wander_enabled = false
+metadata/_edit_pinned_properties_ = [&"flee_speed", &"world_noise_strength", &"max_turn_angle", &"max_radius", &"min_radius"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = SubResource("ShaderMaterial_33rod")
+instance_shader_parameters/lerp_wave = 0.0
+mesh = SubResource("CapsuleMesh_fjhpb")
+
+[node name="pivot" parent="." instance=ExtResource("3_f8vty")]
+
+[node name="radius_vis" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, 0, 0.0578928, 0)
+material_override = SubResource("StandardMaterial3D_ol5bk")
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("QuadMesh_ov2eb")
