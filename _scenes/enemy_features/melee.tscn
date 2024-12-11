@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=4 uid="uid://dwpsppfskic5x"]
 
-[ext_resource type="Script" path="res://_scripts/include/enemy_melee.gd" id="1_dw47a"]
+[ext_resource type="Script" uid="uid://dkwn8rqto4tu7" path="res://_scripts/include/enemy_melee.gd" id="1_dw47a"]
 [ext_resource type="AnimationLibrary" uid="uid://i4t2law61ppy" path="res://_animations/enemy_animation_library.tres" id="2_yaban"]
-[ext_resource type="Shader" path="res://_shaders/custom/custom_frag_actors.gdshader" id="3_yaban"]
+[ext_resource type="Shader" uid="uid://bxx0bibroys0s" path="res://_shaders/custom/custom_frag_actors.gdshader" id="3_yaban"]
 [ext_resource type="Shader" uid="uid://bdsv7soxur1mu" path="res://_shaders/fx/sword_swing.tres" id="4_68p2o"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_68p2o"]
@@ -101,6 +101,6 @@ skeleton = NodePath("")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Root/MeleeMesh/simple_sword"]
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 2.24198e-07, 9.31323e-09, -1.28226)
 material_override = SubResource("ShaderMaterial_sietg")
-instance_shader_parameters/ColorParameter = Color(0.929688, 0.95419, 1, 1)
+instance_shader_parameters/ColorParameter = Color(0.354996, 0.495739, 0.917969, 1)
 instance_shader_parameters/swing = 0.999
 mesh = SubResource("CylinderMesh_ykcqj")

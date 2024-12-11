@@ -122,7 +122,7 @@ _data = {
 }
 
 [node name="SpawnEffect" type="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50732, 0)
 visible = false
 material_override = SubResource("ShaderMaterial_cou12")
 instance_shader_parameters/Add = -0.305

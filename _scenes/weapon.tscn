@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://b4uuwqe6deuv8"]
 
-[ext_resource type="Script" path="res://_scripts/weapon.gd" id="1_bky2i"]
+[ext_resource type="Script" path="res://_scripts/machine_gun.gd" id="1_bky2i"]
 [ext_resource type="PackedScene" uid="uid://dbg8lda400aod" path="res://_scenes/bullet.tscn" id="2_cb5nk"]
 [ext_resource type="Texture2D" uid="uid://dexoiebxo3c1k" path="res://_textures/utils/recoil_vectors_vect_noise.png" id="4_1n64c"]
-[ext_resource type="PackedScene" uid="uid://c6uxdp0ihv34w" path="res://_scenes/weapons/machine_gun.tscn" id="5_3n8br"]
+[ext_resource type="PackedScene" uid="uid://c6uxdp0ihv34w" path="res://_scenes/weapons/machine_gun_mesh.tscn" id="5_3n8br"]
 [ext_resource type="Shader" uid="uid://cu4c5hm21w5va" path="res://_shaders/fx/muzzle_flash.tres" id="5_p12ql"]
 
 [sub_resource type="Curve" id="Curve_q4akf"]
@@ -25,7 +25,7 @@ shader_parameter/Out = Color(0.894531, 0.874221, 0.569565, 1)
 size = Vector2(1.493, 2.462)
 center_offset = Vector3(0, 1.225, 0)
 
-[node name="Weapon" type="Node3D"]
+[node name="machine_gun" type="Node3D"]
 script = ExtResource("1_bky2i")
 bullet_speed = 80.0
 bullet_damage = 5.0

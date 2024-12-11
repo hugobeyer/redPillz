@@ -3,9 +3,12 @@ extends Area3D
 @export_group("General Enemy Parameters")
 @export var enable_general_features: bool = true
 @export var max_health: float = 100.0
-@export var damage: float = 10.0
 @export var death_effect_scene: PackedScene
 @export var enable_melee: bool = true
+
+@export_group("Shield Parameters")
+@export var enable_shield: bool = false
+@onready var _shield: EnemyShield = $WobbleEffect/CharacterMesh/EnemyShield if enable_shield else null
 
 @onready var mesh_instance = $WobbleEffect/CharacterMesh
 @onready var wobble_effect = $WobbleEffect
@@ -19,14 +22,26 @@ var _health: float
 var _time_alive: float = 0
 var _knockback_velocity: Vector3 = Vector3.ZERO
 
-signal enemy_killed(enemy_node)
+signal enemy_killed(enemy)
 
 func _ready():
     if not Engine.is_editor_hint():
         add_to_group("enemies")
         _health = max_health
-        update_health_circle()
-        connect("enemy_killed", Callable(self, "_on_enemy_killed"))
+        
+        # Initialize shield if enabled
+        if enable_shield and _shield:
+            _shield.shield_depleted.connect(_on_shield_depleted)
+            # Hide health circle if shield is active
+            if health_circle:
+                health_circle.visible = false
+        elif not enable_shield and _shield:
+            _shield.queue_free()
+            # Show health circle if no shield
+            update_health_circle()
+        else:
+            # No shield, show health circle
+            update_health_circle()
 
 func _process(delta):
     if Engine.is_editor_hint():
@@ -36,22 +51,43 @@ func _process(delta):
 func hit(direction: Vector3, hit_damage: float, knockback_force: float = 0.0):
     if _health <= 0:
         return
-        
-    _health -= hit_damage
+    
+    var damage_to_apply = hit_damage
+    
+    # Handle shield if active
+    if is_instance_valid(_shield):
+        var shield_strength = _shield.get_shield_strength()
+        if shield_strength > 0:
+            # Calculate damage first
+            damage_to_apply = _shield.take_damage(hit_damage)
+            # Then apply shield effect if shield still exists
+            if is_instance_valid(_shield):
+                _shield.apply_shield_effect(direction * hit_damage)
+            # Return early if shield absorbed all damage
+            if damage_to_apply <= 0:
+                return
+    
+    _health -= damage_to_apply
     update_health_circle()
     
-    if knockback_force > 0:
-        _knockback_velocity = direction * knockback_force
-    
-    if _health <= 0:
-        die()
-    else:
+    # Only apply knockback and wobble if no shield or shield is depleted
+    if not is_instance_valid(_shield) or _shield.get_shield_strength() <= 0:
+        # Apply knockback to the flocking point (parent)
+        if knockback_force > 0 and parent_point and flocking_manager:
+            if flocking_manager.has_method("apply_point_knockback"):
+                print("Applying knockback to flocking point: ", knockback_force)
+                flocking_manager.apply_point_knockback(parent_point, direction, knockback_force)
+        
+        # Apply visual effects
         if effects:
             effects.apply_damage_effect(direction)
         
         if wobble_effect:
             wobble_effect.apply_hit_wobble(-direction)
-        
+    
+    if _health <= 0:
+        die()
+    else:
         if mesh_instance:
             mesh_instance.set_instance_shader_parameter("lerp_wave", 0.5)
             mesh_instance.set_instance_shader_parameter("lerp_color", Color(1.5, 0.1, 0.1, 1.0))
@@ -74,19 +110,27 @@ func die():
     if mesh_instance:
         mesh_instance.visible = false
     
-    if death_effect_scene:
-        # Only spawn effect if visible to camera
-        var camera = get_viewport().get_camera_3d()
-        if camera and camera.is_position_in_frustum(global_position):
-            var effect = death_effect_scene.instantiate()
-            get_tree().current_scene.add_child(effect)
-            effect.global_position = global_position
-            
-            if effect is GPUParticles3D:
-                effect.one_shot = true
-                effect.emitting = false
-                effect.restart()
-                effect.emitting = true
+    # Get camera and check if enemy is visible
+    var camera = get_viewport().get_camera_3d()
+    var is_visible = false
+    
+    if camera:
+        # Simple frustum check is enough for most cases
+        is_visible = camera.is_position_in_frustum(global_position)
+        
+        # Optional: Add a distance check if you want to limit effect range
+        # var distance_to_camera = global_position.distance_to(camera.global_position)
+        # is_visible = is_visible and distance_to_camera < 50.0  # Adjust distance as needed
+    
+    # Only spawn death effect if enemy is visible
+    if death_effect_scene and is_visible:
+        var effect = death_effect_scene.instantiate()
+        get_tree().current_scene.add_child(effect)
+        effect.global_position = global_position
+        
+        if effect is GPUParticles3D:
+            effect.one_shot = true
+            effect.emitting = true  # Changed this to just set emitting true
     
     # Register kill immediately
     GameEvents.register_kill(self)
@@ -105,7 +149,8 @@ func update_health_circle():
     if health_circle:
         var health_percent = _health / max_health
         health_circle.set_progress(health_percent, true)
-        health_circle.visible = true
+        # Only show health circle if there's no active shield
+        health_circle.visible = not (is_instance_valid(_shield) and _shield.get_shield_strength() > 0)
 
 func _on_enemy_killed(_enemy):
     pass
@@ -117,4 +162,24 @@ func _physics_process(delta):
     if _knockback_velocity.length() > 0:
         global_position += _knockback_velocity * delta
         _knockback_velocity = _knockback_velocity.lerp(Vector3.ZERO, delta * 5.0)
+
+func _on_shield_depleted():
+    if _shield:
+        # Optional: Add effects or behavior when shield breaks
+        # var shield_pos = _shield.global_position
+        # var shield_scale = _shield.scale
+        
+        # Remove the shield
+        _shield.queue_free()
+        _shield = null
+        
+        # Show health circle when shield is depleted
+        update_health_circle()
+        
+        # Optional: Add shield break effect here
+        # if shield_break_effect_scene:
+        #     var effect = shield_break_effect_scene.instantiate()
+        #     get_tree().current_scene.add_child(effect)
+        #     effect.global_position = shield_pos
+        #     effect.scale = shield_scale
 

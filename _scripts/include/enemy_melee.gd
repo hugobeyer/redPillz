@@ -13,7 +13,7 @@ extends Node3D  # Change from Node3D to CharacterBody3D
 @export var hit_window_start: float = 0.5
 @export var hit_window_end: float = 0.7
 
-@export var knockback_force: float = 40.0
+@export var knockback_force: float = 80.0
 
 var player_pos: CharacterBody3D
 var animation_player: AnimationPlayer

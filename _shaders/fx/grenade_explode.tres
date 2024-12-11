@@ -244,13 +244,13 @@ code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_toon, specular_disabled;
 
 instance uniform float UVY = 0.25;
-instance uniform float UVX = 1;
-instance uniform float Time1 : hint_range(-1, 1) = 0;
+instance uniform float UVX = 1.0;
+instance uniform float Time1 : hint_range(-1.0, 1.0) = 0.0;
 uniform sampler2D Height : source_color, hint_default_black, repeat_enable;
-instance uniform float explosion_phase = 1;
+instance uniform float explosion_phase = 1.0;
 instance uniform vec4 Smoke : source_color = vec4(0.000000, 0.000000, 0.000000, 1.000000);
 instance uniform vec4 Smoke2 : source_color = vec4(0.339844, 0.339844, 0.339844, 1.000000);
-uniform float Cut = 0;
+uniform float Cut = 0.0;
 instance uniform vec4 Fire : source_color = vec4(1.000000, 0.585938, 0.000000, 1.000000);
 uniform sampler2D Normal : hint_normal, filter_linear_mipmap_anisotropic;
 
@@ -622,7 +622,7 @@ nodes/fragment/40/position = Vector2(960, 300)
 nodes/fragment/41/node = SubResource("VisualShaderNodeFloatFunc_qwqdj")
 nodes/fragment/41/position = Vector2(480, 180)
 nodes/fragment/44/node = SubResource("VisualShaderNodeVectorOp_qwqdj")
-nodes/fragment/44/position = Vector2(2900, 220)
+nodes/fragment/44/position = Vector2(3140, 240)
 nodes/fragment/46/node = SubResource("VisualShaderNodeFloatOp_qwqdj")
 nodes/fragment/46/position = Vector2(1280, 280)
 nodes/fragment/47/node = SubResource("VisualShaderNodeMix_qwqdj")

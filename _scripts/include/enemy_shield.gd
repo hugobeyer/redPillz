@@ -7,27 +7,45 @@ signal shield_depleted
 @export var max_shield_strength: float = 100.0  # Maximum shield strength
 
 var current_shield_strength: float
-
-@onready var shield_mesh: MeshInstance3D
+var shield_mesh: MeshInstance3D
+var is_effect_active: bool = false
 
 func _ready():
-	# shield_mesh = get_node("ShieldMesh")
-	# shield_mesh.set_instance_shader_parameter("lerp_wave", 0)
-	# shield_mesh.set_instance_shader_parameter("lerp_displace_normal", 0)
+	shield_mesh = $ShieldMesh
+	if not shield_mesh:
+		push_warning("Shield mesh not found! Make sure there's a MeshInstance3D named 'ShieldMesh' as a child of the shield.")
+		return
+		
+	# Initialize shader parameters
+	_safe_set_shader_params(0.0)
 	current_shield_strength = max_shield_strength
 
-# func shield_fx():
-# 	if shield_mesh:
-# 		var local_tween = create_tween()
-# 		local_tween.tween_method(set_shield_fx_intensity, 0.0, 0.5, effect_duration / 2)
-# 		local_tween.tween_method(set_shield_fx_intensity, 0.5, 0.0, effect_duration /  2)
+func _safe_set_shader_params(value: float) -> void:
+	if not is_instance_valid(shield_mesh):
+		return
+		
+	# Wrap shader parameter setting in try-catch to handle potential errors
+	if shield_mesh.get_instance_shader_parameter("lerp_wave") != null:
+		shield_mesh.set_instance_shader_parameter("lerp_wave", value)
+	if shield_mesh.get_instance_shader_parameter("lerp_displace_normal") != null:
+		shield_mesh.set_instance_shader_parameter("lerp_displace_normal", value * 0.5)
 
-# func set_shield_fx_intensity(value: float):
-# 	shield_mesh.set_instance_shader_parameter("lerp_wave", value)
-# 	shield_mesh.set_instance_shader_parameter("lerp_displace_normal", value)
+func shield_fx():
+	if not is_instance_valid(shield_mesh) or is_effect_active:
+		return
+		
+	is_effect_active = true
+	
+	# Create new tween
+	var tween = create_tween()
+	tween.finished.connect(func(): is_effect_active = false)
+	
+	# Animate the shield effect
+	tween.tween_method(func(v): _safe_set_shader_params(v), 0.0, 1.0, effect_duration * 0.5)
+	tween.tween_method(func(v): _safe_set_shader_params(v), 1.0, 0.0, effect_duration * 0.5)
 
 func apply_shield_effect(damage: Vector3):
-	# shield_fx()
+	shield_fx()
 	take_damage(damage.length())
 
 func take_damage(damage: float) -> float:

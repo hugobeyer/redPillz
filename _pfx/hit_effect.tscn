@@ -1,18 +1,19 @@
 [gd_scene load_steps=8 format=3 uid="uid://b6xmfaf5gtpnf"]
 
-[ext_resource type="Texture2D" uid="uid://cbsw1icpihs1e" path="res://_textures/hit.png" id="1_ifopj"]
 [ext_resource type="Script" path="res://_scripts/effect/hit_effect.gd" id="1_rwjd3"]
+[ext_resource type="Texture2D" uid="uid://ba78u1rdy5xb" path="res://_textures/hitcircle.png" id="2_4un14"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rwjd3"]
 transparency = 1
 blend_mode = 1
 cull_mode = 2
 no_depth_test = true
+shading_mode = 0
+diffuse_mode = 1
 specular_mode = 2
 albedo_color = Color(1, 0.242188, 0.242188, 1)
-albedo_texture = ExtResource("1_ifopj")
-emission_enabled = true
-emission_texture = ExtResource("1_ifopj")
+albedo_texture = ExtResource("2_4un14")
+albedo_texture_force_srgb = true
 
 [sub_resource type="Gradient" id="Gradient_b43v3"]
 colors = PackedColorArray(0.625, 0.454102, 0.454102, 1, 1, 1, 1, 1)
@@ -21,16 +22,18 @@ colors = PackedColorArray(0.625, 0.454102, 0.454102, 1, 1, 1, 1, 1)
 gradient = SubResource("Gradient_b43v3")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dlsrm"]
-velocity_pivot = Vector3(0, 0, 4.85)
-direction = Vector3(0, 0, 1)
-spread = 56.0
-initial_velocity_min = 5.0
-initial_velocity_max = 5.0
-radial_velocity_min = -1.00002
-radial_velocity_max = 0.999978
-damping_min = 26.285
-damping_max = 30.576
-scale_min = 0.3
+particle_flag_align_y = true
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+particle_flag_damping_as_friction = true
+spread = 82.995
+initial_velocity_min = 0.1
+initial_velocity_max = 0.1
+radial_velocity_min = -0.100022
+radial_velocity_max = 0.0999776
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_max = 0.77
 color = Color(1, 0.719116, 0.390625, 1)
 color_ramp = SubResource("GradientTexture1D_5ikfk")
 turbulence_noise_scale = 2.0
@@ -38,7 +41,6 @@ turbulence_noise_speed_random = 2.58
 turbulence_influence_max = 0.463
 
 [sub_resource type="QuadMesh" id="QuadMesh_taqeq"]
-size = Vector2(0.305, 2.07)
 center_offset = Vector3(0, 0.88, 0)
 
 [node name="HitEffect" type="Node3D"]
@@ -50,12 +52,11 @@ effect_cooldown = 0.2
 material_override = SubResource("StandardMaterial3D_rwjd3")
 cast_shadow = 0
 emitting = false
-amount = 7
+amount = 2
 lifetime = 0.1
 one_shot = true
-explosiveness = 1.0
-local_coords = true
-draw_order = 3
-transform_align = 3
+explosiveness = 0.81
+interpolate = false
+fract_delta = false
 process_material = SubResource("ParticleProcessMaterial_dlsrm")
 draw_pass_1 = SubResource("QuadMesh_taqeq")

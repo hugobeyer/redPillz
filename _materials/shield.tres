@@ -1,0 +1,20 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b20p4mrhusxe3"]
+
+[ext_resource type="Shader" uid="uid://spe4aemmkr2i" path="res://_shaders/player.tres" id="1_my4ra"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_my4ra")
+shader_parameter/FresnelColor = Color(0.149048, 0.246861, 0.433594, 1)
+shader_parameter/FresnelContrast = 0.75
+shader_parameter/FresnelAngle = -0.5
+shader_parameter/FresnelPower = 8.0
+shader_parameter/FresnelIntensity = 1.0
+shader_parameter/FresnelDarkColor = Color(0, 0, 0, 1)
+shader_parameter/FresnelPower2 = 4.0
+shader_parameter/SpecColor = Color(1, 1, 1, 1)
+shader_parameter/SpecSmoothness = -0.1
+shader_parameter/SpecOffset = 0.0
+shader_parameter/SpecSize = 0.5
+shader_parameter/SpecIntentity = 1.0
+shader_parameter/SpecColorFromDiff = 1.0

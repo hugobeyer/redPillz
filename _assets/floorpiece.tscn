@@ -5,11 +5,13 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vp5ut"]
 render_priority = 0
 shader = ExtResource("1_p2vlp")
-shader_parameter/ColorBot = Color(0.150253, 0.138443, 0.167969, 1)
-shader_parameter/ColorTop = Color(0.2408, 0.24864, 0.28, 1)
-shader_parameter/tiling = 2.0
-shader_parameter/ColorTop2 = Color(0.26, 0.26, 0.26, 1)
-shader_parameter/tiling2 = 0.535
+shader_parameter/ColorBot = Color(0.106705, 0.117934, 0.144531, 1)
+shader_parameter/ColorTop = Color(0.25528, 0.260245, 0.273438, 1)
+shader_parameter/tiling = 1.4
+shader_parameter/ColorTop2 = Color(0.304688, 0.29286, 0.276123, 1)
+shader_parameter/CutMax = 0.414
+shader_parameter/CutMin = 0.539
+shader_parameter/tiling2 = 0.293
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_pn3yj"]
 _surfaces = [{
@@ -39,7 +41,9 @@ axis_lock_angular_z = true
 
 [node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, -1, 16)
+layers = 2
 material_override = SubResource("ShaderMaterial_vp5ut")
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_pn3yj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

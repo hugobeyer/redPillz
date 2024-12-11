@@ -79,15 +79,15 @@ default_input_values = [0, 0.0, 1, 0.575]
 
 [resource]
 code = "shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_disabled, ambient_light_disabled, vertex_lighting;
+render_mode blend_add, depth_draw_opaque, cull_back, diffuse_lambert, specular_disabled, ambient_light_disabled, vertex_lighting;
 
 instance uniform vec4 Color_Ramp : source_color = vec4(1.000000, 0.422500, 0.010000, 0.223529);
 instance uniform vec4 Color_Base : source_color = vec4(1.000000, 0.682190, 0.007813, 1.000000);
-instance uniform float FitMin = 0;
-instance uniform float FitMax = 1;
+instance uniform float FitMin = 0.0;
+instance uniform float FitMax = 1.0;
 instance uniform float Add = 0.5;
-instance uniform float power = 4;
-instance uniform float FresnelPow = 8;
+instance uniform float power = 4.0;
+instance uniform float FresnelPow = 8.0;
 
 
 
@@ -165,6 +165,7 @@ void fragment() {
 
 }
 "
+modes/blend = 1
 modes/specular = 2
 flags/ambient_light_disabled = true
 flags/vertex_lighting = true

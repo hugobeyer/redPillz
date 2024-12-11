@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://t30lq63r3ii6"]
+[gd_scene load_steps=13 format=3 uid="uid://t30lq63r3ii6"]
 
 [ext_resource type="Shader" uid="uid://cygtepk8ih3xr" path="res://_shaders/fx/grenade_explode.tres" id="1_4p6ke"]
 [ext_resource type="Texture2D" uid="uid://q848ch3cdxap" path="res://_textures/fx/bomb_worley_H0.png" id="2_63tqn"]
 [ext_resource type="Texture2D" uid="uid://dyf5hpmiahrkh" path="res://_textures/fx/bomb_worley_N0.png" id="3_hyt5q"]
+[ext_resource type="Texture2D" uid="uid://ch1nmx23adn0g" path="res://_textures/grenade_decal.png" id="4_f1tyr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pntop"]
 render_priority = 0
@@ -27,6 +28,12 @@ ring_segments = 20
 [sub_resource type="TorusMesh" id="TorusMesh_4oxol"]
 inner_radius = 2.0
 outer_radius = 2.05
+rings = 42
+ring_segments = 20
+
+[sub_resource type="TorusMesh" id="TorusMesh_edj2h"]
+inner_radius = 2.0
+outer_radius = 2.01
 rings = 42
 ring_segments = 20
 
@@ -356,6 +363,42 @@ tracks/26/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [1.0]
+}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("MeshInstance3D4:instance_shader_parameters/explosion_phase")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.07]
+}
+tracks/28/type = "value"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("MeshInstance3D4:scale")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(5, 5, 5)]
+}
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("Decal:modulate")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_63tqn"]
@@ -687,6 +730,42 @@ tracks/26/keys = {
 "update": 0,
 "values": [0.01, 0.43, 0.111, 0.179]
 }
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("MeshInstance3D4:instance_shader_parameters/explosion_phase")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0, 1.75),
+"transitions": PackedFloat32Array(0.258816, 1),
+"update": 0,
+"values": [0.157, 0.001]
+}
+tracks/28/type = "value"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("MeshInstance3D4:scale")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"times": PackedFloat32Array(0, 1.75),
+"transitions": PackedFloat32Array(0.170755, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(10, 10, 10)]
+}
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("Decal:modulate")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"times": PackedFloat32Array(0, 1.75),
+"transitions": PackedFloat32Array(5.85634, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mw2ne"]
 _data = {
@@ -736,6 +815,20 @@ instance_shader_parameters/UVY = 1.0
 instance_shader_parameters/explosion_phase = 1.0
 mesh = SubResource("TorusMesh_4oxol")
 
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+process_mode = 3
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 1, 0)
+material_override = SubResource("ShaderMaterial_pntop")
+cast_shadow = 0
+instance_shader_parameters/Fire = Color(0.25, 0.146484, 0, 1)
+instance_shader_parameters/Smoke = Color(0.0227482, 0.0227482, 0.0227482, 1)
+instance_shader_parameters/Smoke2 = Color(0.29474, 0.29474, 0.29474, 1)
+instance_shader_parameters/Time1 = -0.0199706
+instance_shader_parameters/UVX = 4.0
+instance_shader_parameters/UVY = 0.142737
+instance_shader_parameters/explosion_phase = 0.07
+mesh = SubResource("TorusMesh_edj2h")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 process_mode = 3
 libraries = {
@@ -744,4 +837,14 @@ libraries = {
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 light_size = 5.0
+light_specular = 0.1
+light_bake_mode = 0
 omni_attenuation = -0.01
+
+[node name="Decal" type="Decal" parent="."]
+size = Vector3(8, 8, 8)
+texture_albedo = ExtResource("4_f1tyr")
+modulate = Color(0, 0, 0, 1)
+upper_fade = 1.58341
+lower_fade = 0.848527
+cull_mask = 1048574

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqqqve11vs0xo"]
+
+[ext_resource type="Script" path="res://_scripts/dash_trail.gd" id="1_dash_trail"]
+
+[node name="DashTrail" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.71882, -10.4028, 7.31771)
+cast_shadow = 0
+script = ExtResource("1_dash_trail")
+trail_sections = 15
+trail_length = 3.0
+trail_lifetime = 3.0
+trail_width = 3.0
+trail_color = Color(0, 0.854902, 0.854902, 0.784314)

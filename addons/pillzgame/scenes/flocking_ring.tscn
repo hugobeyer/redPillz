@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cyw5sexd8rqxc"]
 
-[ext_resource type="Shader" uid="uid://cj56yf8aifbws" path="res://_shaders/uji/enemy_health.tres" id="1_3t6g7"]
+[ext_resource type="Shader" uid="uid://cj56yf8aifbws" path="res://_shaders/uji/circle_health.tres" id="1_3t6g7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iny4y"]
 render_priority = 0

@@ -1,12 +1,12 @@
 [gd_scene load_steps=18 format=3 uid="uid://dbg8lda400aod"]
 
-[ext_resource type="Script" path="res://_scripts/bullet.gd" id="1_6qr1r"]
-[ext_resource type="Shader" path="res://_shaders/custom/custom_frag_actors.gdshader" id="2_548kj"]
+[ext_resource type="Script" uid="uid://b10pw5tasurdn" path="res://_scripts/bullet.gd" id="1_6qr1r"]
+[ext_resource type="Shader" uid="uid://spe4aemmkr2i" path="res://_shaders/player.tres" id="3_38ul2"]
 [ext_resource type="Shader" uid="uid://yy0m6bxqtdmw" path="res://_shaders/fx/bullet_glow.tres" id="3_wq28f"]
 [ext_resource type="PackedScene" uid="uid://b6xmfaf5gtpnf" path="res://_pfx/hit_effect.tscn" id="5_os0af"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wq28f"]
-size = Vector3(0.6, 0.6, 0.9)
+size = Vector3(0.6, 0.6, 1.35726)
 
 [sub_resource type="Curve" id="Curve_yx7hr"]
 bake_resolution = 32
@@ -61,27 +61,20 @@ curve = SubResource("Curve_yx7hr")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_44twl"]
 render_priority = 0
-shader = ExtResource("2_548kj")
-shader_parameter/color_top = Color(1, 0.828033, 0.371094, 1)
-shader_parameter/color_bottom = Color(0.664063, 0.560303, 0.560303, 1)
-shader_parameter/specular_color = Color(1, 1, 1, 1)
-shader_parameter/fresnel_color = Color(0.402344, 0.297043, 0.297043, 1)
-shader_parameter/vertex_color_mix = 0.0
-shader_parameter/blend_mode = 0
-shader_parameter/gradient_rotation_mode = 1
-shader_parameter/gradient_offset = 0.183
-shader_parameter/gradient_smoothness = 0.0
-shader_parameter/diffuse_contrast = 1.0
-shader_parameter/diffuse_wrap = 2.0
-shader_parameter/diffuse_offset = -0.84
-shader_parameter/specular_intensity = 1.0
-shader_parameter/specular_size = 0.129
-shader_parameter/specular_smoothness = 0.132
-shader_parameter/specular_offset = 0.0820001
-shader_parameter/fresnel_power = 1.091
-shader_parameter/fresnel_intensity = 1.005
-shader_parameter/fresnel_contrast = 1.315
-shader_parameter/fresnel_offset = 0.257
+shader = ExtResource("3_38ul2")
+shader_parameter/FresnelColor = Color(0.149048, 0.246861, 0.433594, 1)
+shader_parameter/FresnelContrast = 0.75
+shader_parameter/FresnelAngle = -0.5
+shader_parameter/FresnelPower = 8.0
+shader_parameter/FresnelIntensity = 1.0
+shader_parameter/FresnelDarkColor = Color(0, 0, 0, 1)
+shader_parameter/FresnelPower2 = 4.0
+shader_parameter/SpecColor = Color(1, 1, 1, 1)
+shader_parameter/SpecSmoothness = -0.1
+shader_parameter/SpecOffset = 0.0
+shader_parameter/SpecSize = 0.5
+shader_parameter/SpecIntentity = 1.0
+shader_parameter/SpecColorFromDiff = 1.0
 
 [sub_resource type="Curve" id="Curve_0k6bf"]
 bake_resolution = 32
@@ -109,31 +102,36 @@ max_speed = 512.0
 damping = 0.013
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.33188e-08, 0, -0.528931)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.04453e-07, 0, -0.698579)
 shape = SubResource("BoxShape3D_wq28f")
 
 [node name="Flare" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 8.74228e-08, 8.74228e-08, -8.74228e-08, -4.37114e-08, 1, 8.74228e-08, -1, -4.37114e-08, -4.94137e-08, 0, 0.565226)
+transform = Transform3D(1, 8.74228e-08, 8.74228e-08, -8.74228e-08, -4.37114e-08, 1, 8.74228e-08, -1, -4.37114e-08, 2.0487e-08, 0, -0.234345)
 visible = false
 mesh = SubResource("RibbonTrailMesh_ecagq")
 
 [node name="Flare2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 8.74228e-08, 8.74228e-08, -8.74228e-08, -4.37114e-08, 1, 8.74228e-08, -1, -4.37114e-08, 0.00967761, 0.010386, 0.453674)
+transform = Transform3D(1, 8.74228e-08, 8.74228e-08, -8.74228e-08, -4.37114e-08, 1, 8.74228e-08, -1, -4.37114e-08, 0.00967768, 0.010386, -0.345897)
 material_override = SubResource("ShaderMaterial_ydl3o")
 cast_shadow = 0
-instance_shader_parameters/Add = 0.26
-instance_shader_parameters/Color_Base = Color(1, 0.726563, 0, 1)
-instance_shader_parameters/Color_Ramp = Color(1, 0, 0, 1)
-instance_shader_parameters/FitMax = 0.682
-instance_shader_parameters/FitMin = 0.052
-instance_shader_parameters/FresnelPow = 3.715
-instance_shader_parameters/power = 0.705
+instance_shader_parameters/Add = 0.125
+instance_shader_parameters/Color_Base = Color(1, 0.812012, 0.3125, 1)
+instance_shader_parameters/Color_Ramp = Color(1, 0.398438, 0, 1)
+instance_shader_parameters/FitMax = 0.587
+instance_shader_parameters/FitMin = 0.222
+instance_shader_parameters/FresnelPow = 2.745
+instance_shader_parameters/power = 0.46
 mesh = SubResource("TubeTrailMesh_h4b3n")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1, -8.74228e-08, -1.69407e-21, -3.82137e-15, 4.37114e-08, -1, 8.74228e-08, -1, -4.37114e-08, 5.92583e-08, 4.65984e-09, -0.559103)
+transform = Transform3D(-1, -8.74228e-08, -1.69407e-21, -3.82137e-15, 4.37114e-08, -1, 8.74228e-08, -1, -4.37114e-08, 1.29159e-07, 4.65984e-09, -1.35867)
 material_override = SubResource("ShaderMaterial_44twl")
 cast_shadow = 0
+instance_shader_parameters/ColorBottom = Color(1, 0.760742, 0.453125, 1)
+instance_shader_parameters/ColorTop = Color(0.991577, 1, 0.730469, 1)
+instance_shader_parameters/Srgb = false
+instance_shader_parameters/Use_VertexColor = false
 mesh = SubResource("TubeTrailMesh_7ckpg")
 
 [node name="HitEffect" parent="." instance=ExtResource("5_os0af")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.99007e-08, 0, -0.799571)

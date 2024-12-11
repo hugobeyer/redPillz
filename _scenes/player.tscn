@@ -1,12 +1,13 @@
-[gd_scene load_steps=16 format=4 uid="uid://cqhe3y3sj4vb3"]
+[gd_scene load_steps=17 format=4 uid="uid://cqhe3y3sj4vb3"]
 
-[ext_resource type="Script" path="res://_scripts/Player.gd" id="1_7wjim"]
-[ext_resource type="PackedScene" uid="uid://b4uuwqe6deuv8" path="res://_scenes/weapon.tscn" id="3_v7pw0"]
-[ext_resource type="Script" path="res://_scripts/camera.gd" id="4_pg2h6"]
-[ext_resource type="Script" path="res://_scripts/grenade_toss.gd" id="5_0snai"]
+[ext_resource type="Script" uid="uid://bfc6xfwhxxdxp" path="res://_scripts/Player.gd" id="1_7wjim"]
+[ext_resource type="PackedScene" uid="uid://33x3xxhwxhfu" path="res://_scenes/machine_gun.tscn" id="2_e0412"]
+[ext_resource type="Script" uid="uid://lyk5trhefq0m" path="res://_scripts/camera.gd" id="4_pg2h6"]
+[ext_resource type="Script" uid="uid://445g8h7bk6ph" path="res://_scripts/grenade_toss.gd" id="5_0snai"]
 [ext_resource type="PackedScene" uid="uid://d3iotrkckue1d" path="res://_scenes/weapons/grenade.tscn" id="6_gbdp8"]
-[ext_resource type="Shader" uid="uid://cj56yf8aifbws" path="res://_shaders/uji/enemy_health.tres" id="7_gcu3j"]
-[ext_resource type="Script" path="res://_resources/ui/health_bar_3d.gd" id="8_5vrs7"]
+[ext_resource type="Shader" uid="uid://cj56yf8aifbws" path="res://_shaders/uji/circle_health.tres" id="7_gcu3j"]
+[ext_resource type="Script" uid="uid://c1wckfmq3vgqf" path="res://_resources/ui/health_bar_3d.gd" id="8_5vrs7"]
+[ext_resource type="Script" uid="uid://dwhpsuh35356w" path="res://_scripts/effect/wobble.gd" id="8_dbx21"]
 [ext_resource type="Material" uid="uid://cq4xpar1scfxp" path="res://_materials/generic_actort_mat.tres" id="8_qif70"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qre1v"]
@@ -21,8 +22,8 @@ height = 1.41809
 render_priority = 0
 shader = ExtResource("7_gcu3j")
 shader_parameter/Color = Color(1, 1, 1, 1)
-shader_parameter/Color2 = Color(1, 0.515625, 0, 1)
-shader_parameter/Color3 = Color(1, 0, 0.65625, 1)
+shader_parameter/Color2 = Color(0.171875, 1, 0, 1)
+shader_parameter/Color3 = Color(1, 0, 0, 1)
 
 [sub_resource type="QuadMesh" id="QuadMesh_01lar"]
 size = Vector2(2.5, 2.5)
@@ -64,50 +65,53 @@ axis_lock_linear_y = true
 script = ExtResource("1_7wjim")
 health = 256.0
 SPEED = 32.0
-ROTATION_SPEED = 20.0
+ROTATION_SPEED = 16.0
 SHOOTING_THRESHOLD = 0.2
 camera = NodePath("GameCamera")
-acceleration = 200.0
+acceleration = 300.0
 deceleration = 100.0
-air_control = 0.5
+air_control = 0.25
 knockback_resistance = 0.2
-knockback_recovery_speed = 7.0
+dash_force = 64.0
+dash_duration = 0.1
+dash_cooldown = 3.0
 
-[node name="Weapon" parent="." node_paths=PackedStringArray("camera_node") instance=ExtResource("3_v7pw0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.13251, 1.86103)
-bullet_speed = 50.0
-bullet_damage = 6.0
-spread_count_bullet = 5
-spread_count_angle = 15.0
-spread_count_randomize_angle = 15.0
-recoil_force = 1.0
-max_recoil = 5.0
-recoil_linear_damp = 0.001
-recoil_angle_damp = 0.001
-recoil_noise_intensity = 10.0
-recoil_mouse_up_recovery_time = 0.5001
+[node name="MachineGun" parent="." node_paths=PackedStringArray("camera_node") instance=ExtResource("2_e0412")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.21042, 1.79737)
+bullet_speed = 40.0
+bullet_damage = 2.0
+spread_count_angle = 5.0
+recoil_force = 64.0
+max_recoil = 128.0
+recoil_amplitude = 4.0
+recoil_randomness = 0.89
 camera_node = NodePath("../GameCamera")
+kills_per_upgrade = 4
+spread_angle_increase = 2
+bullet_speed_increase = 4
+bullet_damage_increase = 0.25
 
-[node name="Muzzle" type="Node3D" parent="Weapon"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.113356)
+[node name="Muzzle" type="Node3D" parent="MachineGun"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00646579, 0.167464)
 
-[node name="Marker3D" type="Marker3D" parent="Weapon/Muzzle"]
+[node name="Marker3D" type="Marker3D" parent="MachineGun/Muzzle"]
 gizmo_extents = 1.0
 
 [node name="GameCamera" type="Camera3D" parent="." groups=["cameragame"]]
-transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 24, 55, 12)
+transform = Transform3D(0.771625, -0.511316, 0.378354, 0, 0.594823, 0.803857, -0.636078, -0.620276, 0.45898, 28, 64, 36)
 top_level = true
-cull_mask = 1
+cull_mask = 7
 current = true
-fov = 20.0
-far = 1000.0
+fov = 25.0
+far = 2000.0
 script = ExtResource("4_pg2h6")
 camera_offset = Vector3(28, 64, 36)
 max_offset = 64.0
-blend_factor = 0.3
-look_adjust_strength = 0.3
+attraction_strength = 0.75
+blend_factor = 0.0
+look_adjust_strength = 0.58
 enemies_average_smoothing = 0.4
-player_y_offset = 0.0
+player_y_offset = 4.195
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 physics_interpolation_mode = 1
@@ -120,10 +124,11 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.1
 shape = SubResource("CapsuleShape3D_cmorj")
 
 [node name="Grenade" type="Node3D" parent="."]
-transform = Transform3D(-1, 7.03388e-08, 5.19152e-08, 0, 0.59384, -0.804583, -8.74228e-08, -0.804583, -0.59384, -0.00170481, 2.85414, 0.350156)
+transform = Transform3D(-1, 8.23172e-08, 2.94382e-08, 0, 0.336734, -0.9416, -8.74228e-08, -0.9416, -0.336734, -0.00170481, 2.85414, 0.350156)
 script = ExtResource("5_0snai")
 grenade_scene = ExtResource("6_gbdp8")
-toss_strength = 2200.0
+toss_strength = 3000.0
+cooldown_time = 2.0
 
 [node name="HealthCircle" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.15, 0)
@@ -133,14 +138,23 @@ instance_shader_parameters/health_parm = 1.0
 mesh = SubResource("QuadMesh_01lar")
 script = ExtResource("8_5vrs7")
 
-[node name="PlayerMesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 0, 0, 0)
+[node name="WobbleEffect" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+script = ExtResource("8_dbx21")
+spring_stiffness = 222.0
+spring_damping = 5.0
+max_rotation_degrees = 75.0
+hit_force = 24.0
+
+[node name="PlayerMesh" type="MeshInstance3D" parent="WobbleEffect"]
+transform = Transform3D(-100, -8.74228e-06, -1.04216e-12, 0, -1.19209e-05, 100, -8.74228e-06, 100, 1.19209e-05, 0, 0, 0)
 material_override = ExtResource("8_qif70")
 gi_mode = 0
 instance_shader_parameters/ColorTop = Color(0.625, 0.26638, 0.239258, 1)
 instance_shader_parameters/Metallic = 0.0
 instance_shader_parameters/Srgb = false
 instance_shader_parameters/Use_VertexColor = false
+instance_shader_parameters/lerp_color = Color(0.972656, 0.85333, 0.208969, 1)
 instance_shader_parameters/lerp_contrast = 1.0
 instance_shader_parameters/lerp_frequency = 2.0
 instance_shader_parameters/lerp_wave = 0.0

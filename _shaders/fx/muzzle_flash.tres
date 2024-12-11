@@ -192,7 +192,7 @@ operator = 8
 code = "shader_type spatial;
 render_mode blend_add, depth_draw_opaque, cull_disabled, diffuse_toon, specular_disabled, depth_prepass_alpha, shadows_disabled, vertex_lighting;
 
-uniform float Speed = 12;
+uniform float Speed = 12.0;
 uniform vec4 In : source_color = vec4(0.867188, 0.528442, 0.000000, 1.000000);
 uniform vec4 Out : source_color = vec4(0.957031, 0.778873, 0.500946, 1.000000);
 uniform sampler2D tex_frg_29 : source_color;

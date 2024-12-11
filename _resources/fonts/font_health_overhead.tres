@@ -7,4 +7,3 @@ subpixel_positioning = 3
 
 [resource]
 base_font = SubResource("SystemFont_4qjkv")
-spacing_glyph = -11
