@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://b6xmfaf5gtpnf"]
+
+[ext_resource type="Script" path="res://_scripts/effect/hit_effect.gd" id="1_rwjd3"]
+[ext_resource type="Texture2D" uid="uid://ba78u1rdy5xb" path="res://_textures/hitcircle.png" id="2_4un14"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rwjd3"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+no_depth_test = true
+shading_mode = 0
+diffuse_mode = 1
+specular_mode = 2
+albedo_color = Color(1, 0.242188, 0.242188, 1)
+albedo_texture = ExtResource("2_4un14")
+albedo_texture_force_srgb = true
+
+[sub_resource type="Gradient" id="Gradient_b43v3"]
+colors = PackedColorArray(0.625, 0.454102, 0.454102, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5ikfk"]
+gradient = SubResource("Gradient_b43v3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dlsrm"]
+particle_flag_align_y = true
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+particle_flag_damping_as_friction = true
+spread = 82.995
+initial_velocity_min = 0.1
+initial_velocity_max = 0.1
+radial_velocity_min = -0.100022
+radial_velocity_max = 0.0999776
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_max = 0.77
+color = Color(1, 0.719116, 0.390625, 1)
+color_ramp = SubResource("GradientTexture1D_5ikfk")
+turbulence_noise_scale = 2.0
+turbulence_noise_speed_random = 2.58
+turbulence_influence_max = 0.463
+
+[sub_resource type="QuadMesh" id="QuadMesh_taqeq"]
+center_offset = Vector3(0, 0.88, 0)
+
+[node name="HitEffect" type="Node3D"]
+script = ExtResource("1_rwjd3")
+lifetime = 0.15
+effect_cooldown = 0.2
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_rwjd3")
+cast_shadow = 0
+emitting = false
+amount = 2
+lifetime = 0.1
+one_shot = true
+explosiveness = 0.81
+interpolate = false
+fract_delta = false
+process_material = SubResource("ParticleProcessMaterial_dlsrm")
+draw_pass_1 = SubResource("QuadMesh_taqeq")

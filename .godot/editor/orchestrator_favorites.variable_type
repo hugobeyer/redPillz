@@ -1,0 +1,7 @@
+class:PackedScene
+class:Object
+type:Vector3
+class:Node3D
+type:int
+type:float
+type:Array

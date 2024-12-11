@@ -1,0 +1,5 @@
+{
+	"enemy_scenes": [
+		{"scene": "res://_scenes/enemy.tscn", "weight": 1.0},
+	]
+}

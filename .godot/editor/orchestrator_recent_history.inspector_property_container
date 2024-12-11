@@ -1,0 +1,4 @@
+type:Array
+class:Node
+class:Node3D
+type:Vector3

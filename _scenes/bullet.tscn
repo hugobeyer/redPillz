@@ -1,0 +1,137 @@
+[gd_scene load_steps=18 format=3 uid="uid://dbg8lda400aod"]
+
+[ext_resource type="Script" path="res://_scripts/bullet.gd" id="1_6qr1r"]
+[ext_resource type="Shader" uid="uid://spe4aemmkr2i" path="res://_shaders/player.tres" id="3_38ul2"]
+[ext_resource type="Shader" uid="uid://yy0m6bxqtdmw" path="res://_shaders/fx/bullet_glow.tres" id="3_wq28f"]
+[ext_resource type="PackedScene" uid="uid://b6xmfaf5gtpnf" path="res://_pfx/hit_effect.tscn" id="5_os0af"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wq28f"]
+size = Vector3(0.6, 0.6, 1.35726)
+
+[sub_resource type="Curve" id="Curve_yx7hr"]
+bake_resolution = 32
+_data = [Vector2(0, 0.00301039), 0.0, 9.27554, 0, 0, Vector2(0.0395387, 0.40367), 6.37566, 6.37566, 0, 0, Vector2(0.16145, 0.80992), 2.01994, 2.01994, 0, 0, Vector2(0.470346, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.804329), -0.920573, -1.96303, 0, 0]
+point_count = 5
+
+[sub_resource type="Gradient" id="Gradient_wq28f"]
+offsets = PackedFloat32Array(0, 0.994595)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ydl3o"]
+gradient = SubResource("Gradient_wq28f")
+fill = 2
+fill_from = Vector2(0.482906, 0.0384615)
+fill_to = Vector2(0.495726, 1)
+
+[sub_resource type="Gradient" id="Gradient_h4b3n"]
+offsets = PackedFloat32Array(0.444595, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_os0af"]
+gradient = SubResource("Gradient_h4b3n")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vak6l"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+specular_mode = 2
+albedo_color = Color(0.81, 0.522045, 0.1701, 0.490196)
+albedo_texture = SubResource("GradientTexture2D_ydl3o")
+detail_mask = SubResource("GradientTexture2D_os0af")
+detail_blend_mode = 3
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_ecagq"]
+material = SubResource("StandardMaterial3D_vak6l")
+size = 0.66
+sections = 12
+section_length = 0.233
+section_segments = 1
+curve = SubResource("Curve_yx7hr")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ydl3o"]
+render_priority = 0
+shader = ExtResource("3_wq28f")
+
+[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_h4b3n"]
+radius = 0.396
+radial_steps = 6
+sections = 8
+section_length = 0.374
+curve = SubResource("Curve_yx7hr")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_44twl"]
+render_priority = 0
+shader = ExtResource("3_38ul2")
+shader_parameter/FresnelColor = Color(0.149048, 0.246861, 0.433594, 1)
+shader_parameter/FresnelContrast = 0.75
+shader_parameter/FresnelAngle = -0.5
+shader_parameter/FresnelPower = 8.0
+shader_parameter/FresnelIntensity = 1.0
+shader_parameter/FresnelDarkColor = Color(0, 0, 0, 1)
+shader_parameter/FresnelPower2 = 4.0
+shader_parameter/SpecColor = Color(1, 1, 1, 1)
+shader_parameter/SpecSmoothness = -0.1
+shader_parameter/SpecOffset = 0.0
+shader_parameter/SpecSize = 0.5
+shader_parameter/SpecIntentity = 1.0
+shader_parameter/SpecColorFromDiff = 1.0
+
+[sub_resource type="Curve" id="Curve_0k6bf"]
+bake_resolution = 32
+_data = [Vector2(0, 0), 0.0, 4.51284, 0, 0, Vector2(0.112026, 0.396216), 2.12522, 2.12522, 0, 0, Vector2(0.443163, 0.830419), 0.416744, 0.416744, 0, 0, Vector2(0.99999, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), -0.0401218, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_7ckpg"]
+radius = 0.27
+sections = 4
+section_length = 0.221
+section_rings = 1
+cap_top = false
+curve = SubResource("Curve_0k6bf")
+
+[node name="Bullet" type="Area3D" groups=["player_projectyle"]]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0.218395)
+collision_layer = 16
+collision_mask = 2
+input_ray_pickable = false
+linear_damp = 0.04
+script = ExtResource("1_6qr1r")
+lifetime = 1.5
+knockback = 0.2
+max_speed = 512.0
+damping = 0.013
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.04453e-07, 0, -0.698579)
+shape = SubResource("BoxShape3D_wq28f")
+
+[node name="Flare" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 8.74228e-08, 8.74228e-08, -8.74228e-08, -4.37114e-08, 1, 8.74228e-08, -1, -4.37114e-08, 2.0487e-08, 0, -0.234345)
+visible = false
+mesh = SubResource("RibbonTrailMesh_ecagq")
+
+[node name="Flare2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 8.74228e-08, 8.74228e-08, -8.74228e-08, -4.37114e-08, 1, 8.74228e-08, -1, -4.37114e-08, 0.00967768, 0.010386, -0.345897)
+material_override = SubResource("ShaderMaterial_ydl3o")
+cast_shadow = 0
+instance_shader_parameters/Add = 0.125
+instance_shader_parameters/Color_Base = Color(1, 0.812012, 0.3125, 1)
+instance_shader_parameters/Color_Ramp = Color(1, 0.398438, 0, 1)
+instance_shader_parameters/FitMax = 0.587
+instance_shader_parameters/FitMin = 0.222
+instance_shader_parameters/FresnelPow = 2.745
+instance_shader_parameters/power = 0.46
+mesh = SubResource("TubeTrailMesh_h4b3n")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, -8.74228e-08, -1.69407e-21, -3.82137e-15, 4.37114e-08, -1, 8.74228e-08, -1, -4.37114e-08, 1.29159e-07, 4.65984e-09, -1.35867)
+material_override = SubResource("ShaderMaterial_44twl")
+cast_shadow = 0
+instance_shader_parameters/ColorBottom = Color(1, 0.760742, 0.453125, 1)
+instance_shader_parameters/ColorTop = Color(0.991577, 1, 0.730469, 1)
+instance_shader_parameters/Srgb = false
+instance_shader_parameters/Use_VertexColor = false
+mesh = SubResource("TubeTrailMesh_7ckpg")
+
+[node name="HitEffect" parent="." instance=ExtResource("5_os0af")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.99007e-08, 0, -0.799571)

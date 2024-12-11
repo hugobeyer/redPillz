@@ -1,0 +1,11 @@
+type:int
+type:int
+bitfield:KeyModifierMask
+enum:PropertyHint
+type:float
+type:Vector3
+type:AABB
+type:Array
+class:PackedScene
+class:Object
+class:Node3D

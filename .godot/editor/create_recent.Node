@@ -1,0 +1,14 @@
+SpotLight3D
+VoxelGI
+GPUParticles3D
+Node3D
+MeshInstance3D
+Decal
+WorldEnvironment
+StaticBody3D
+CSGBox3D
+OmniLight3D
+AnimationPlayer
+Sprite2D
+CSGTorus3D
+CSGSphere3D

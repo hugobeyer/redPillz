@@ -1,0 +1,373 @@
+[gd_scene load_steps=24 format=3 uid="uid://dr0ytgjthjbsx"]
+
+[ext_resource type="PackedScene" uid="uid://clcwdr5begw0g" path="res://_scenes/main.tscn" id="2_3drmh"]
+[ext_resource type="PackedScene" uid="uid://cqhe3y3sj4vb3" path="res://_scenes/player.tscn" id="4_2xjta"]
+[ext_resource type="Script" path="res://addons/pillzgame/scripts/flocking_manager.gd" id="4_h5qa2"]
+[ext_resource type="PackedScene" uid="uid://rl466e7l360v" path="res://_scenes/enemy.tscn" id="5_jpu4a"]
+[ext_resource type="PackedScene" uid="uid://clas1dtbwyvcs" path="res://_pfx/enemy_spawn.tscn" id="5_li44f"]
+[ext_resource type="PackedScene" uid="uid://d1hxjm7h8wm7d" path="res://_scenes/env/floor_mesh.tscn" id="8_2kao7"]
+[ext_resource type="PackedScene" uid="uid://bwr26kclpyg6b" path="res://_scenes/buddy.tscn" id="9_428cj"]
+[ext_resource type="Script" path="res://_scripts/UI/init_counter.gd" id="10_fyitg"]
+[ext_resource type="FontVariation" uid="uid://cwxu07t5jip7t" path="res://_resources/fonts/font_health_overhead.tres" id="12_ihlwy"]
+[ext_resource type="PackedScene" uid="uid://b6xmfaf5gtpnf" path="res://_pfx/hit_effect.tscn" id="13_2kao7"]
+[ext_resource type="Script" path="res://_scripts/UI/game_label_kills.gd" id="13_aid0c"]
+[ext_resource type="PackedScene" uid="uid://bc15gesn8lubs" path="res://addons/thumbstick_plugin/plugin/joysticks/normal_joystick.tscn" id="14_wgw40"]
+
+[sub_resource type="Environment" id="Environment_jv15w"]
+sky_custom_fov = 25.6
+ambient_light_source = 2
+ambient_light_color = Color(0.260651, 0.291335, 0.457031, 1)
+reflected_light_source = 1
+tonemap_mode = 2
+tonemap_exposure = 0.88
+tonemap_white = 2.0
+ssao_detail = 5.0
+ssil_radius = 2.0
+ssil_intensity = 5.0
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+sdfgi_bounce_feedback = 1.0
+sdfgi_cascades = 5
+sdfgi_min_cell_size = 0.65625
+sdfgi_energy = 0.76
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 0.5
+glow_strength = 2.0
+glow_hdr_scale = 4.0
+glow_hdr_luminance_cap = 4.0
+fog_mode = 1
+fog_light_color = Color(0, 0, 0, 1)
+fog_light_energy = 1.2
+fog_sun_scatter = 0.35
+fog_density = 1.0
+fog_sky_affect = 0.81
+fog_depth_curve = 1.07177
+fog_depth_begin = 80.0
+fog_depth_end = 122.0
+adjustment_brightness = 1.1
+adjustment_contrast = 1.21
+adjustment_saturation = 1.09
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_scswu"]
+vertices = PackedVector3Array(-319.4, 0.4, -319.4, -319.4, 0.4, 319.3, 319.3, 0.4, 319.3, 319.3, 0.4, -319.4)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+geometry_source_geometry_mode = 1
+geometry_source_group_name = &"nav"
+cell_size = 0.3
+cell_height = 0.2
+agent_height = 2.0
+agent_radius = 0.6
+region_min_size = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_feyws"]
+bg_color = Color(0.415638, 0.131704, 0.264798, 1)
+border_width_top = 54
+border_color = Color(0.260123, 0.481062, 0.658436, 1)
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 11
+corner_detail = 3
+shadow_color = Color(0.055, 0.1375, 0.22, 0.415686)
+shadow_size = 1
+shadow_offset = Vector2(5.761, 5.085)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7s0d6"]
+light_mode = 1
+
+[sub_resource type="SystemFont" id="SystemFont_scswu"]
+font_names = PackedStringArray("Squada One")
+generate_mipmaps = true
+allow_system_fallback = false
+subpixel_positioning = 0
+oversampling = 1.0
+
+[sub_resource type="FontVariation" id="FontVariation_oh2c4"]
+base_font = SubResource("SystemFont_scswu")
+spacing_glyph = -1
+spacing_space = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_vkafs"]
+font = SubResource("FontVariation_oh2c4")
+font_size = 80
+font_color = Color(0.773438, 0.480165, 0.24472, 1)
+outline_color = Color(0.25, 0, 0, 0)
+shadow_size = 0
+shadow_color = Color(0, 0.096, 0.32, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_uetrx"]
+font = ExtResource("12_ihlwy")
+font_size = 116
+font_color = Color(0.796463, 0.81893, 0.549323, 1)
+outline_size = 4
+outline_color = Color(0.53, 0.1113, 0.1113, 0)
+shadow_size = 0
+shadow_color = Color(0.00569999, 0.0732767, 0.19, 0.490196)
+shadow_offset = Vector2(9, 7)
+
+[sub_resource type="LabelSettings" id="LabelSettings_cuwdd"]
+font = ExtResource("12_ihlwy")
+font_size = 137
+font_color = Color(0.777344, 0.288467, 0.288467, 1)
+outline_color = Color(1, 1, 1, 0)
+shadow_size = 0
+shadow_color = Color(0.00569999, 0.0732767, 0.19, 0.490196)
+shadow_offset = Vector2(9, 7)
+
+[sub_resource type="Curve" id="Curve_kayam"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.217926, 0), 0.0, 0.0, 0, 0, Vector2(0.794376, 1), 0.773994, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="LabelSettings" id="LabelSettings_aet16"]
+font = ExtResource("12_ihlwy")
+font_size = 41
+font_color = Color(0.726563, 0.664744, 0.261108, 1)
+outline_size = 4
+outline_color = Color(0.53, 0.1113, 0.1113, 0)
+shadow_size = 0
+shadow_color = Color(0.00569999, 0.0732767, 0.19, 0.490196)
+shadow_offset = Vector2(9, 7)
+
+[node name="GameRoot" type="Node3D" groups=["gameroot"]]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jv15w")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.305695, 0.603151, -0.736722, 1.86265e-09, 0.773763, 0.633475, 0.952129, -0.19365, 0.236536, 0, 0, 0)
+light_color = Color(0.957031, 0.971802, 1, 1)
+shadow_enabled = true
+shadow_opacity = 0.55
+shadow_blur = 0.236
+directional_shadow_mode = 1
+directional_shadow_split_1 = 0.335
+directional_shadow_blend_splits = true
+directional_shadow_fade_start = 1.0
+directional_shadow_max_distance = 150.0
+
+[node name="Main" parent="." instance=ExtResource("2_3drmh")]
+
+[node name="FlockingManager" type="Node3D" parent="Main" groups=["flock_manager"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.3152, -3.05176e-05, -82.4896)
+script = ExtResource("4_h5qa2")
+flocking_agent = ExtResource("5_jpu4a")
+spawn_effect_scene = ExtResource("5_li44f")
+target_node_path = NodePath("../Player")
+target_detection_range = 256.0
+target_weight = 132.5
+turn_speed = 32.0
+min_speed = 24.0
+max_speed = 40.0
+min_turn_speed = 32.0
+max_turn_speed = 64.0
+flock_min_distance_between_points = 2.2
+flock_min_distance_to_target = 2.0
+flock_separation_weight = 32.0
+flock_cohesion_weight = 1.0
+inner_radius = 1.0
+outer_radius = 5.0
+spawn_interval = 0.02
+initial_spawn_delay = 4.0
+spawn_effect_duration = 1.5
+respawn_cooldown = 0.05
+max_respawn_cycles = 10
+points_per_respawn = 8
+spawn_radius = 16.0
+min_spawn_distance = 2.0
+
+[node name="Player" parent="Main" instance=ExtResource("4_2xjta")]
+
+[node name="Buddy" parent="Main" instance=ExtResource("9_428cj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.65084, 5.385, 0.119752)
+base_speed = 32.0
+hover_radius = 12.0
+max_distance_from_player = 8.0
+preferred_height = 5.0
+height_wobble_amount = 4.0
+noise_influence = 1.02
+noise_speed = 0.3
+second_noise_influence = 0.705
+time_scale = 2.0
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="Environment"]
+navigation_mesh = SubResource("NavigationMesh_scswu")
+
+[node name="Node3D" parent="Environment" groups=["nav"] instance=ExtResource("8_2kao7")]
+
+[node name="MainHUD" type="Control" parent="."]
+layout_mode = 3
+anchor_top = 0.005
+anchor_right = 1.0
+anchor_bottom = 1.005
+offset_left = 1.0
+offset_top = -5.0
+offset_right = 1.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelCtrl" type="Control" parent="MainHUD"]
+layout_mode = 1
+anchor_left = 0.999
+anchor_top = 0.005
+anchor_right = 0.999
+anchor_bottom = 0.005
+offset_left = -376.02
+offset_top = -0.2
+offset_right = -0.0201416
+offset_bottom = 224.8
+grow_horizontal = 0
+
+[node name="Panel" type="Panel" parent="MainHUD/PanelCtrl"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = -0.011
+anchor_right = 1.0
+anchor_bottom = -0.011
+offset_left = -161.426
+offset_top = 95.87
+offset_right = 37.5736
+offset_bottom = 172.87
+grow_horizontal = 0
+rotation = -0.204204
+scale = Vector2(0.891339, 0.789322)
+tooltip_text = "Pilled"
+theme_override_styles/panel = SubResource("StyleBoxFlat_feyws")
+
+[node name="Based" type="Label" parent="MainHUD/PanelCtrl"]
+light_mask = 0
+z_index = 1475
+material = SubResource("CanvasItemMaterial_7s0d6")
+layout_direction = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.002
+anchor_right = 1.002
+offset_left = -140.752
+offset_top = 135.0
+offset_right = 69.2477
+offset_bottom = 220.0
+grow_horizontal = 0
+rotation = -0.151205
+scale = Vector2(0.362416, 0.362416)
+size_flags_vertical = 0
+theme_override_constants/shadow_outline_size = 5
+text = "PiLLeD!"
+label_settings = SubResource("LabelSettings_vkafs")
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 1
+
+[node name="LabelKills" type="Label" parent="MainHUD/PanelCtrl"]
+z_as_relative = false
+texture_filter = 2
+texture_repeat = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.01
+anchor_top = -0.004
+anchor_right = 1.01
+anchor_bottom = -0.004
+offset_left = -251.252
+offset_top = 37.835
+offset_right = -40.2518
+offset_bottom = 184.679
+grow_horizontal = 0
+rotation = 0.0168936
+scale = Vector2(0.585275, 0.585275)
+pivot_offset = Vector2(108.618, 61.0815)
+size_flags_horizontal = 8
+size_flags_vertical = 0
+localize_numeral_system = false
+text = "367"
+label_settings = SubResource("LabelSettings_uetrx")
+horizontal_alignment = 1
+script = ExtResource("13_aid0c")
+
+[node name="Counter" type="Label" parent="MainHUD"]
+z_as_relative = false
+texture_filter = 2
+texture_repeat = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -117.5
+offset_top = -91.5
+offset_right = 117.5
+offset_bottom = 91.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(117.5, 91.5)
+size_flags_horizontal = 8
+size_flags_vertical = 0
+localize_numeral_system = false
+text = "3
+"
+label_settings = SubResource("LabelSettings_cuwdd")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("10_fyitg")
+start_scale = 1.0
+end_scale = 0.75
+start_color = Color(0.972656, 0.972656, 0.972656, 1)
+end_color = Color(0.776471, 0.290196, 0.290196, 1)
+tween_curve = SubResource("Curve_kayam")
+
+[node name="Incoming" type="Label" parent="MainHUD"]
+z_as_relative = false
+texture_filter = 2
+texture_repeat = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -237.793
+offset_top = -34.7599
+offset_right = -2.79321
+offset_bottom = 34.2401
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+localize_numeral_system = false
+text = "INCOMING!"
+label_settings = SubResource("LabelSettings_aet16")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ControllerCanvas" type="CanvasLayer" parent="MainHUD" groups=["thumbstick"]]
+
+[node name="MovementJoystick" parent="MainHUD/ControllerCanvas" groups=["thumbstick"] instance=ExtResource("14_wgw40")]
+anchors_preset = -1
+anchor_top = 0.405455
+grow_horizontal = 1
+grow_vertical = 0
+_mode = "Follow"
+follow_radius_tolerance = 10.0
+max_drag_radius = 128.0
+start_trigger_threshold = 15.97
+_base_color = Color(1, 1, 1, 0.105882)
+_normal_bg_tint = Color(1, 1, 1, 0.372549)
+_normal_handle_tint = Color(1, 1, 1, 0.513726)
+_pressed_bg_tint = Color(1, 1, 1, 0.32549)
+_pressed_handle_tint = Color(0.329412, 0.709804, 0.909804, 0.658824)
+_disabled_bg_tint = Color(0.6, 0.6, 0.6, 0)
+_disabled_handle_tint = Color(0.6, 0.6, 0.6, 0)
+_on_trigger_method_name = "_on_trigger"
+_on_pressed_method_name = "_on_pressed"
+_on_released_method_name = "_on_released"
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="HitEffect" parent="." instance=ExtResource("13_2kao7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.27367, 0)
